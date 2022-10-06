@@ -32,7 +32,7 @@ const Gradient: FC<IPropsComp> = ({
   colorBoardHeight = 120,
   defaultColors
 }) => {
-  debugger;
+  // debugger;
   const parsedColors = useCallback(() => {
     return parseGradient(value);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -57,17 +57,17 @@ const Gradient: FC<IPropsComp> = ({
   const [color, setColor] = useState(initColor);
   const debounceColor = useDebounce(color, debounceMS);
 
-  console.log(JSON.stringify({
-    initColor,
-    stops,
-    lastStop,
-    lastStopLoc,
-    activeStop,
-    activeIdx,
-    init,
-    activeColor,
-    color
-  }));
+  // console.log(JSON.stringify({
+  //   initColor,
+  //   stops,
+  //   lastStop,
+  //   lastStopLoc,
+  //   activeStop,
+  //   activeIdx,
+  //   init,
+  //   activeColor,
+  //   color
+  // }));
 
   useEffect(() => {
     if (debounce && debounceColor && init === false) {
@@ -98,7 +98,7 @@ const Gradient: FC<IPropsComp> = ({
     if (findActive) {
       const tinycolor = tinyColor(String(findActive[0]));
       if ('#' + tinycolor.toHex() !== activeColor.hex) {
-        console.log('reseeting one?');
+        // console.log('reseeting one?');
         setActiveColor({
           hex: activeStop,
           alpha: Number(Math.round(lastStop[3] * 100)),
