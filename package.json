@@ -37,7 +37,8 @@
     "deploy": "gh-pages -d storybook-static/",
     "release": "npm run test && release-it",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "prepare": "npm run build"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
