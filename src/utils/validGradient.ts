@@ -41,7 +41,8 @@ const generateRegExp = () => {
   const searchFlags = 'gi';
   const rAngle = /(?:[+-]?\d*\.?\d+)(?:deg|grad|rad|turn)/;
   const rSideCornerCapture = /to\s+((?:(?:left|right)(?:\s+(?:top|bottom))?))/;
-  const rRadial = /circle at\s+((?:(?:left|right|center|top|bottom)(?:\s+(?:left|right|center|top|bottom))?))/;
+  const rRadial =
+    /circle at\s+((?:(?:left|right|center|top|bottom)(?:\s+(?:left|right|center|top|bottom))?))/;
   const rComma = /\s*,\s*/;
   const rColorHex = /\#(?:[a-f0-9]{6,8}|[a-f0-9]{3})/;
   const rDigits3 = /\(\s*(?:\d{1,3}%?\s*,\s*){2}%?\d{1,3}%?\s*\)/;
@@ -158,7 +159,8 @@ const parseGradient = (regExpLib: IGradientReg, input: string) => {
 export default (input: string) => {
   const regExpLib = generateRegExp();
   let result;
-  const rGradientEnclosedInBrackets = /.*gradient\s*\(((?:\([^\)]*\)|[^\)\(]*)*)\)/;
+  const rGradientEnclosedInBrackets =
+    /.*gradient\s*\(((?:\([^\)]*\)|[^\)\(]*)*)\)/;
   const match = rGradientEnclosedInBrackets.exec(input);
 
   if (match !== null) {

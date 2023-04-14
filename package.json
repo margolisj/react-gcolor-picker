@@ -30,8 +30,8 @@
     "start": "rollup -c -w",
     "test": "run-s test:unit test:lint test:build",
     "test:build": "run-s build",
-    "test:lint": "eslint .",
-    "test:fix": "eslint . --fix",
+    "lint": "eslint . --ext js,ts,tsx,mjs,md,mdx",
+    "lint:fix": "eslint . --fix",
     "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
     "predeploy": "storybook build",
@@ -41,8 +41,8 @@
     "build-storybook": "storybook build"
   },
   "peerDependencies": {
-    "react": ">=17.0.2",
-    "react-dom": ">=17.0.2"
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
@@ -57,7 +57,6 @@
     "@storybook/addon-actions": "^7.0.2",
     "@storybook/addon-essentials": "^7.0.2",
     "@storybook/addon-links": "^7.0.2",
-    "@storybook/addon-mdx-gfm": "^7.0.2",
     "@storybook/cli": "^7.0.2",
     "@storybook/preset-scss": "^1.0.3",
     "@storybook/react": "^7.0.2",
@@ -108,7 +107,8 @@
     "storybook": "^7.0.2",
     "style-loader": "^3.3.2",
     "typescript": "5.0.3",
-    "web-vitals": "^3.3.1"
+    "web-vitals": "^3.3.1",
+    "webpack": "^5.79.0"
   },
   "dependencies": {
     "tinycolor2": "^1.4.2"
