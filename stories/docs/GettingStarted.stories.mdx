@@ -3,97 +3,100 @@ import { Meta } from '@storybook/addon-docs/blocks';
 <Meta title='Getting Started' />
 
 <div>
-<h2 id="install">Install</h2>
-<h4 id="important-this-component-uses-react-hooks-and-works-on-react-version-16.8.0-and-higher"><strong>Important: this component uses React Hooks and works on React version 16.8.0 and higher</strong></h4>
-<hr />
-<pre><code>npm install --save react-gcolor-picker</code></pre>
-<h2 id="usage">Usage</h2>
-<pre className="tsx"><code>import React from &#39;react&#39;;<br /><br />
-import ReactGPicker from &#39;react-gcolor-picker&#39;;</code></pre>
-<p><a href="https://github.com/undind/react-gcolor-picker/blob/main/README.md">README</a></p>
-<h2 id="props">Props</h2>
-<table>
-<thead>
-<tr className="header">
-<th align="left">Attribute</th>
-<th align="center">Type</th>
-<th align="center">Default</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr className="odd">
-<td align="left">value</td>
-<td align="center"><code>string</code></td>
-<td align="center"><code>#ffffff</code></td>
-<td align="left">Default color value. Accepted: rgba/rgb, hsla/hsl, named colors</td>
-</tr>
-<tr className="even">
-<td align="left">format</td>
-<td align="center"><code>string</code></td>
-<td align="center"><code>rgb</code></td>
-<td align="left">Return value format. Acepted: 'rgb', 'hex', 'hsl'</td>
-</tr>
-<tr className="odd">
-<td align="left">gradient</td>
-<td align="center"><code>bool</code></td>
-<td align="center"><code>false</code></td>
-<td align="left">Show gradient color panel</td>
-</tr>
-<tr className="even">
-<td align="left">solid</td>
-<td align="center"><code>bool</code></td>
-<td align="center"><code>true</code></td>
-<td align="left">Show solid color panel</td>
-</tr>
-<tr className="odd">
-<td align="left">debounceMS</td>
-<td align="center"><code>number</code></td>
-<td align="center"><code>300</code></td>
-<td align="left">Debounce ms value</td>
-</tr>
-<tr className="even">
-<td align="left">debounce</td>
-<td align="center"><code>bool</code></td>
-<td align="center"><code>true</code></td>
-<td align="left">Debouce off/on</td>
-</tr>
-<tr className="odd">
-<td align="left">showAlpha</td>
-<td align="center"><code>bool</code></td>
-<td align="center"><code>true</code></td>
-<td align="left">Show/hide alpha input and range</td>
-</tr>
-<tr className="even">
-<td align="left">popupWidth</td>
-<td align="center"><code>number</code></td>
-<td align="center"><code>267</code></td>
-<td align="left">Popup width</td>
-</tr>
-<tr className="odd">
-<td align="left">colorBoardHeight</td>
-<td align="center"><code>number</code></td>
-<td align="center"><code>120</code></td>
-<td align="left">Board color height</td>
-</tr>
-<tr className="even">
-<td align="left">defaultColors</td>
-<td align="center"><code>array</code></td>
-<td align="center"><a href="#default-color-list">List</a></td>
-<td align="left">Default colors array for panel picker</td>
-</tr>
-<tr className="odd">
-<td align="left">onChange</td>
-<td align="center"><code>function</code></td>
-<td align="center"><code>null</code></td>
-<td align="left">Default onChange function returns string value on rgba format</td>
-</tr>
-</tbody>
-</table>
-<p>When passing a value for a gradient, you must specify the position of all colors. Otherwise the component will throw an exception.
-For example:</p>
-<h3 id="wrong">Wrong</h3>
-<pre>
+    <h2 id="install">Install</h2>
+    <h4 id="important-this-component-uses-react-hooks-and-works-on-react-version-16.8.0-and-higher"><strong>Important: this component uses React Hooks and works on React version 16.8.0 and higher</strong></h4>
+    <hr />
+    <pre><code>npm install --save react-gcolor-picker</code></pre>
+    <h2 id="usage">Usage</h2>
+    <pre className="tsx">
+    <code>
+      import React from &#39;react&#39;;<br /><br />
+      import ReactGPicker from &#39;react-gcolor-picker&#39;;
+    </code>
+    </pre>
+    <p><a href="https://github.com/undind/react-gcolor-picker/blob/main/README.md">README</a></p>
+    <h2 id="props">Props</h2>
+    <table>
+        <thead>
+            <tr className="header">
+                <th align="left">Attribute</th>
+                <th align="center">Type</th>
+                <th align="center">Default</th>
+                <th align="left">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr className="odd">
+                <td align="left">value</td>
+                <td align="center"><code>string</code></td>
+                <td align="center"><code>#ffffff</code></td>
+                <td align="left">Default color value. Accepted: rgba/rgb, hsla/hsl, named colors</td>
+            </tr>
+            <tr className="even">
+                <td align="left">format</td>
+                <td align="center"><code>string</code></td>
+                <td align="center"><code>rgb</code></td>
+                <td align="left">Return value format. Acepted: 'rgb', 'hex', 'hsl'</td>
+            </tr>
+            <tr className="odd">
+                <td align="left">gradient</td>
+                <td align="center"><code>bool</code></td>
+                <td align="center"><code>false</code></td>
+                <td align="left">Show gradient color panel</td>
+            </tr>
+            <tr className="even">
+                <td align="left">solid</td>
+                <td align="center"><code>bool</code></td>
+                <td align="center"><code>true</code></td>
+                <td align="left">Show solid color panel</td>
+            </tr>
+            <tr className="odd">
+                <td align="left">debounceMS</td>
+                <td align="center"><code>number</code></td>
+                <td align="center"><code>300</code></td>
+                <td align="left">Debounce ms value</td>
+            </tr>
+            <tr className="even">
+                <td align="left">debounce</td>
+                <td align="center"><code>bool</code></td>
+                <td align="center"><code>true</code></td>
+                <td align="left">Debouce off/on</td>
+            </tr>
+            <tr className="odd">
+                <td align="left">showAlpha</td>
+                <td align="center"><code>bool</code></td>
+                <td align="center"><code>true</code></td>
+                <td align="left">Show/hide alpha input and range</td>
+            </tr>
+            <tr className="even">
+                <td align="left">popupWidth</td>
+                <td align="center"><code>number</code></td>
+                <td align="center"><code>267</code></td>
+                <td align="left">Popup width</td>
+            </tr>
+            <tr className="odd">
+                <td align="left">colorBoardHeight</td>
+                <td align="center"><code>number</code></td>
+                <td align="center"><code>120</code></td>
+                <td align="left">Board color height</td>
+            </tr>
+            <tr className="even">
+                <td align="left">defaultColors</td>
+                <td align="center"><code>array</code></td>
+                <td align="center"><a href="#default-color-list">List</a></td>
+                <td align="left">Default colors array for panel picker</td>
+            </tr>
+            <tr className="odd">
+                <td align="left">onChange</td>
+                <td align="center"><code>function</code></td>
+                <td align="center"><code>null</code></td>
+                <td align="left">Default onChange function returns string value on rgba format</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>When passing a value for a gradient, you must specify the position of all colors. Otherwise the component will throw an exception. For example:</p>
+    <h3 id="wrong">Wrong</h3>
+    <pre>
   <code>
     <span class="hljs-function">
       <span class="hljs-title">linear-gradient</span>
@@ -103,8 +106,8 @@ For example:</p>
     </span>
   </code>
 </pre>
-<h3 id="correct">Correct</h3>
-<pre><code>
+    <h3 id="correct">Correct</h3>
+    <pre><code>
   <span class="hljs-function">
     <span class="hljs-title">linear-gradient</span>
     <span class="hljs-params">
@@ -112,44 +115,49 @@ For example:</p>
     </span>
   </span>
 </code></pre>
-<p>If you are using a radial gradient a list of possible directions for it:</p>
-<pre><code>circle at left top<br />
-circle at center top<br />
-circle at right top<br />
-circle at left<br />
-circle at center<br />
-circle at right<br />
-circle at left bottom<br />
-circle at center bottom<br />
-circle at right bottom<br />
-</code></pre><h2 id="default-color-list">Default color list</h2>
-<pre><code>
-'#FF6900',<br />
-'#FCB900',<br />
-'#7BDCB5',<br />
-'#00D084',<br />
-'#8ED1FC',<br />
-'#0693E3',<br />
-'#ABB8C3',<br />
-'#607d8b',<br />
-'#EB144C',<br />
-'#F78DA7',<br />
-'#ba68c8',<br />
-'#9900EF',<br />
-'linear-gradient(0deg, rgb(255, 177, 153) 0%, rgb(255, 8, 68) 100%)',<br />
-'linear-gradient(270deg, rgb(251, 171, 126) 8.00%, rgb(247, 206, 104) 92.00%)',<br />
-'linear-gradient(315deg, rgb(150, 230, 161) 8.00%, rgb(212, 252, 121) 92.00%)',<br />
-'linear-gradient(to left, rgb(249, 240, 71) 0%, rgb(15, 216, 80) 100%)',<br />
-'linear-gradient(315deg, rgb(194, 233, 251) 8.00%, rgb(161, 196, 253) 92.00%)',<br />
-'linear-gradient(0deg, rgb(0, 198, 251) 0%, rgb(0, 91, 234) 100%)',<br />
-'linear-gradient(0deg, rgb(167, 166, 203) 0%, rgb(137, 137, 186) 51.00%, rgb(137, 137, 186) 100%)',<br />
-'linear-gradient(0deg, rgb(80, 82, 133) 0%, rgb(88, 94, 146) 15.0%, rgb(101, 104, 159) 28.00%, rgb(116, 116, 176) 43.00%, rgb(126, 126, 187) 57.00%, rgb(131, 137, 199) 71.00%, rgb(151, 149, 212) 82.00%, rgb(162, 161, 220) 92.00%, rgb(181, 174, 228) 100%)',<br />
-'linear-gradient(270deg, rgb(255, 126, 179) 0%, rgb(255, 117, 140) 100%)',<br />
-'linear-gradient(90deg, rgb(120, 115, 245) 0%, rgb(236, 119, 171) 100%)',<br />
-'linear-gradient(45deg, #2e266f 0.00%, #9664dd38 100.00%)',
-'radial-gradient(circle at center, yellow 0%, #009966 50%, purple 100%)'
-</code></pre>
-<h2 id="license">License</h2>
-<p>MIT © <a href="https://github.com/undind">undind</a></p>
-
+    <p>If you are using a radial gradient a list of possible directions for it:</p>
+    <pre>
+        <code>
+            circle at left top<br />
+            circle at center top<br />
+            circle at right top<br />
+            circle at left<br />
+            circle at center<br />
+            circle at right<br />
+            circle at left bottom<br />
+            circle at center bottom<br />
+            circle at right bottom<br />
+        </code>
+    </pre>
+    <h2 id="default-color-list">Default color list</h2>
+    <pre>
+        <code>
+            '#FF6900',<br />
+            '#FCB900',<br />
+            '#7BDCB5',<br />
+            '#00D084',<br />
+            '#8ED1FC',<br />
+            '#0693E3',<br />
+            '#ABB8C3',<br />
+            '#607d8b',<br />
+            '#EB144C',<br />
+            '#F78DA7',<br />
+            '#ba68c8',<br />
+            '#9900EF',<br />
+            'linear-gradient(0deg, rgb(255, 177, 153) 0%, rgb(255, 8, 68) 100%)',<br />
+            'linear-gradient(270deg, rgb(251, 171, 126) 8.00%, rgb(247, 206, 104) 92.00%)',<br />
+            'linear-gradient(315deg, rgb(150, 230, 161) 8.00%, rgb(212, 252, 121) 92.00%)',<br />
+            'linear-gradient(to left, rgb(249, 240, 71) 0%, rgb(15, 216, 80) 100%)',<br />
+            'linear-gradient(315deg, rgb(194, 233, 251) 8.00%, rgb(161, 196, 253) 92.00%)',<br />
+            'linear-gradient(0deg, rgb(0, 198, 251) 0%, rgb(0, 91, 234) 100%)',<br />
+            'linear-gradient(0deg, rgb(167, 166, 203) 0%, rgb(137, 137, 186) 51.00%, rgb(137, 137, 186) 100%)',<br />
+            'linear-gradient(0deg, rgb(80, 82, 133) 0%, rgb(88, 94, 146) 15.0%, rgb(101, 104, 159) 28.00%, rgb(116, 116, 176) 43.00%, rgb(126, 126, 187) 57.00%, rgb(131, 137, 199) 71.00%, rgb(151, 149, 212) 82.00%, rgb(162, 161, 220) 92.00%, rgb(181, 174, 228) 100%)',<br />
+            'linear-gradient(270deg, rgb(255, 126, 179) 0%, rgb(255, 117, 140) 100%)',<br />
+            'linear-gradient(90deg, rgb(120, 115, 245) 0%, rgb(236, 119, 171) 100%)',<br />
+            'linear-gradient(45deg, #2e266f 0.00%, #9664dd38 100.00%)',<br />
+            'radial-gradient(circle at center, yellow 0%, #009966 50%, purple 100%)'
+        </code>
+    </pre>
+    <h2 id="license">License</h2>
+    <p>MIT © <a href="https://github.com/undind">undind</a></p>
 </div>
