@@ -42,6 +42,6 @@
     "build",
     "dist",
     "example",
-    "rollup.config.js"
+    "rollup.config.mjs"
   ]
 }

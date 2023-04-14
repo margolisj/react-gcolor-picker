@@ -93,9 +93,24 @@ import ReactGPicker from &#39;react-gcolor-picker&#39;;</code></pre>
 <p>When passing a value for a gradient, you must specify the position of all colors. Otherwise the component will throw an exception.
 For example:</p>
 <h3 id="wrong">Wrong</h3>
-<pre><code><span class="hljs-function"><span class="hljs-title">linear-gradient</span><span class="hljs-params">(<span>180deg</span>, <span>#000000</span>,<span>#ff0000</span>)</span></span>
-</code></pre><h3 id="correct">Correct</h3>
-<pre><code><span class="hljs-function"><span class="hljs-title">linear-gradient</span><span class="hljs-params">(<span>180deg</span>, <span>#000000</span> <span>0%</span>,<span>#ff0000</span> <span>100%</span>)</span></span>
+<pre>
+  <code>
+    <span class="hljs-function">
+      <span class="hljs-title">linear-gradient</span>
+      <span class="hljs-params">
+        (<span>180deg</span>, <span>#000000</span>,<span>#ff0000</span>)
+      </span>
+    </span>
+  </code>
+</pre>
+<h3 id="correct">Correct</h3>
+<pre><code>
+  <span class="hljs-function">
+    <span class="hljs-title">linear-gradient</span>
+    <span class="hljs-params">
+      (<span>180deg</span>, <span>#000000</span> <span>0%</span>,<span>#ff0000</span> <span>100%</span>)
+    </span>
+  </span>
 </code></pre>
 <p>If you are using a radial gradient a list of possible directions for it:</p>
 <pre><code>circle at left top<br />
@@ -108,7 +123,8 @@ circle at left bottom<br />
 circle at center bottom<br />
 circle at right bottom<br />
 </code></pre><h2 id="default-color-list">Default color list</h2>
-<pre><code>'#FF6900',<br />
+<pre><code>
+'#FF6900',<br />
 '#FCB900',<br />
 '#7BDCB5',<br />
 '#00D084',<br />
