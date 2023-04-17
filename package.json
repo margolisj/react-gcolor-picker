@@ -19,6 +19,7 @@
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "source": "src/index.tsx",
+  "types": "dist/index.d.ts",
   "engines": {
     "node": ">=10"
   },
@@ -39,7 +40,6 @@
     "release": "npm run test && release-it",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
-    "prepare": "npm run build"
   },
   "peerDependencies": {
     "react": ">=18.0.0",
