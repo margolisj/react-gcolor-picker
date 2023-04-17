@@ -1,5 +1,3 @@
-import React from 'react';
-
 import ReactGPicker from './ReactGPicker';
 import type { Meta, StoryObj } from '@storybook/react';
 
@@ -12,7 +10,8 @@ type Story = StoryObj<typeof ReactGPicker>;
 
 export const Gradient: Story = {
   args: {
-    value: 'linear-gradient(315deg, hsl(199, 88%, 87%) 8.00%,hsl(217, 96%, 81%) 92.00%)',
+    value:
+      'linear-gradient(315deg, hsl(199, 88%, 87%) 8.00%,hsl(217, 96%, 81%) 92.00%)',
     format: 'hsl',
     solid: false,
     gradient: true,

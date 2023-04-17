@@ -26,11 +26,7 @@ const ReactGPicker: FC<IPropsMain> = ({
 
   return (
     <div className='wrapper' style={{ background: color }}>
-      <span
-        role='textbox'
-        aria-multiline='true'
-        className='color-text'
-      >
+      <span role='textbox' aria-multiline='true' className='color-text'>
         {color}
       </span>
       <div className='centered'>
