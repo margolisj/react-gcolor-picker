@@ -1,18 +1,17 @@
 import React from 'react';
-import { Story, Meta } from '@storybook/react/types-6-0';
 
 import ReactGPicker from './ReactGPicker';
 import { IPropsMain } from '../src/components/Colorpicker/types';
+import type { Meta, StoryObj } from '@storybook/react';
 
 export default {
   title: 'Example/Gradient',
   component: ReactGPicker
-} as Meta;
+} as Meta<typeof ReactGPicker>;
 
-const Template: Story<IPropsMain> = (args) => <ReactGPicker {...args} />;
+type Story = StoryObj<typeof ReactGPicker>;
 
-export const Gradient = Template.bind({});
-Gradient.args = {
+export const Gradient: Story = {
   value: 'linear-gradient(315deg, hsl(199, 88%, 87%) 8.00%,hsl(217, 96%, 81%) 92.00%)',
   format: 'hsl',
   solid: false,
