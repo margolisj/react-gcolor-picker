@@ -1,6 +1,5 @@
 build/
 dist/
-stories/
 storybook-static/
 node_modules/
 .snapshots/
