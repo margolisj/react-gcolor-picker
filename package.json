@@ -1,6 +1,6 @@
 {
-  "name": "react-gcolor-picker",
-  "version": "1.3.2",
+  "name": "react-gcolor-picker-2",
+  "version": "0.0.1",
   "description": "React gradient color picker",
   "type": "module",
   "keywords": [
@@ -37,7 +37,8 @@
     "test:watch": "react-scripts test --env=jsdom",
     "predeploy": "storybook build",
     "deploy": "gh-pages -d storybook-static/",
-    "release": "npm run test && release-it",
+    "release": "yarn test && release-it",
+    "release:dry": "yarn test && release-it --dry-run",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },

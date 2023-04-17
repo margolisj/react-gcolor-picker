@@ -1,5 +1,12 @@
 # React gradient color picker
 
+This is being published publicly to make my life a little eaiser using the previous version than
+linking my fixed/updated via github.
+
+**USE AT YOUR OWN RISK. SUBJECT TO CHANGES AT MY WHIM.**
+
+### Inspired by [react-gcolor-picker](https://github.com/undind/react-gcolor-picker)
+
 ### Inspired by [gpickr](https://github.com/Simonwep/gpickr)
 
 [![NPM](https://img.shields.io/npm/v/react-gcolor-picker.svg)](https://www.npmjs.com/package/react-gcolor-picker) [![License](https://img.shields.io/npm/l/react-gcolor-picker.svg)](https://github.com/undind/react-gcolor-picker/blob/main/LICENSE)
@@ -130,4 +137,4 @@ circle at right bottom
 
 ## License
 
-MIT © [undind](https://github.com/undind)
+MIT ©
