@@ -1,6 +1,6 @@
 import tinycolor from 'tinycolor2';
 
-import { validGradient } from '.';
+import validGradient from './validGradient';
 
 interface IGradientStop {
   color: string;

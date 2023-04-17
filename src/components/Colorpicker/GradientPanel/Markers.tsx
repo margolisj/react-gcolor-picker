@@ -59,7 +59,7 @@ const Markers: FC<IPropsPanel> = ({
 
       setActiveColor({
         ...activeColor,
-        loc: loc,
+        loc,
         index: newStops.find((item) => item[1] === loc)[2]
       });
     }
