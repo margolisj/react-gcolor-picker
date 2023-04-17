@@ -1,5 +1,5 @@
 import React from 'react';
-import { Story, Meta } from '@storybook/react/types-6-0';
+import { StoryFn, Meta } from '@storybook/react';
 
 import ReactGPicker from './ReactGPicker';
 import { IPropsMain } from '../src/components/Colorpicker/types';
@@ -9,7 +9,7 @@ export default {
   component: ReactGPicker
 } as Meta;
 
-const Template: Story<IPropsMain> = (args) => <ReactGPicker {...args} />;
+const Template: StoryFn<IPropsMain> = (args) => <ReactGPicker {...args} />;
 
 export const Both = Template.bind({});
 Both.args = {
