@@ -86,9 +86,10 @@ const Gradient: FC<IPropsComp> = ({
       const tinycolor = tinyColor(String(findActive[0]));
       if ('#' + tinycolor.toHex() !== activeColor.hex) {
         setActiveColor({
-          ...activeColor,
-          hex: '#' + tinycolor.toHex(),
-          alpha: tinycolor.getAlpha() * 100
+          hex: activeStop,
+          alpha: Number(Math.round(lastStop[3] * 100)),
+          loc: lastStopLoc,
+          index: activeIdx
         });
       }
     }
