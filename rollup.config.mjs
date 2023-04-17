@@ -29,10 +29,7 @@ export default {
     external(),
     nodeResolve(),
     sass({ insert: true }),
-    typescript({
-      // rollupCommonJSResolveHack: true,
-      // clean: true
-    }),
+    typescript({}),
     commonjs({
       include: ['node_modules/**']
     })
