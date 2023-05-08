@@ -71,7 +71,7 @@ export const checkValidColorsArray = (
         }
 
         if (validColor === 'Not correct position') {
-          console.warn(
+          console.log(
             'Incorrect gradient default value. You need to indicate the location for the colors. We ignore this gradient value'
           );
           return false;
