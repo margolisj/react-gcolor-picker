@@ -9,9 +9,9 @@ linking my fixed/updated via github.
 
 ### Inspired by [gpickr](https://github.com/Simonwep/gpickr)
 
-[![NPM](https://img.shields.io/npm/v/react-gcolor-picker.svg)](https://www.npmjs.com/package/react-gcolor-picker) [![License](https://img.shields.io/npm/l/react-gcolor-picker.svg)](https://github.com/undind/react-gcolor-picker/blob/main/LICENSE)
+[![NPM](https://img.shields.io/npm/v/react-gcolor-picker-2.svg)](https://www.npmjs.com/package/react-gcolor-picker-2) [![License](https://img.shields.io/npm/l/react-gcolor-picker-2.svg)](https://github.com/margolisj/react-gcolor-picker/blob/main/LICENSE)
 
-**[Demo](https://undind.github.io/react-gcolor-picker/)**
+**[Demo](https://margolisj.github.io/react-gcolor-picker/)**
 
 ## Install
 
@@ -20,13 +20,13 @@ linking my fixed/updated via github.
 ---
 
 ```bash
-npm install --save react-gcolor-picker
+npm install --save react-gcolor-picker-2
 ```
 
 OR
 
 ```bash
-yarn add react-gcolor-picker
+yarn add react-gcolor-picker-2
 ```
 
 ## Usage
@@ -34,7 +34,7 @@ yarn add react-gcolor-picker
 ```tsx
 import React from 'react';
 
-import ReactGPicker from 'react-gcolor-picker';
+import ReactGPicker from 'react-gcolor-picker-2';
 
 function App() {
   const onChange = (value) => {
