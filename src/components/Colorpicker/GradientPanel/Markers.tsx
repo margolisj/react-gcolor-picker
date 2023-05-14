@@ -4,7 +4,6 @@ import React, {
   useEffect,
   MouseEvent,
   TouchEvent,
-  MutableRefObject,
   useState
 } from 'react';
 import tinycolor from 'tinycolor2';
@@ -22,7 +21,7 @@ const Markers: FC<IPropsPanel> = ({
   format = 'rgb',
   showAlpha = true
 }) => {
-  const node = useRef() as MutableRefObject<HTMLDivElement>;
+  const node = useRef<HTMLDivElement>();
 
   const [needDeleteActive, setNeedDeleteActive] = useState<boolean>(false);
   const [hideStop, setHideStop] = useState<boolean>(false);

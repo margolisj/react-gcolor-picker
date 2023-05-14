@@ -1,11 +1,4 @@
-import React, {
-  FC,
-  useEffect,
-  useRef,
-  MutableRefObject,
-  MouseEvent,
-  TouchEvent
-} from 'react';
+import React, { FC, useEffect, useRef, MouseEvent, TouchEvent } from 'react';
 
 import { TinyColor } from '../../../utils';
 
@@ -17,7 +10,7 @@ const Ribbon: FC<TPropsComp> = ({
   onChange,
   setChange
 }) => {
-  const node = useRef() as MutableRefObject<HTMLDivElement>;
+  const node = useRef<HTMLDivElement>();
 
   const removeListeners = () => {
     window.removeEventListener('mousemove', onDrag);

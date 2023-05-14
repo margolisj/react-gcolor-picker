@@ -2,7 +2,6 @@ import React, {
   FC,
   useEffect,
   useRef,
-  MutableRefObject,
   MouseEvent,
   TouchEvent
 } from 'react';
@@ -20,7 +19,7 @@ const Board: FC<TPropsComp> = ({
   onChange,
   setChange
 }) => {
-  const node = useRef() as MutableRefObject<HTMLDivElement>;
+  const node = useRef<HTMLDivElement>();
 
   const removeListeners = () => {
     setChange(false);

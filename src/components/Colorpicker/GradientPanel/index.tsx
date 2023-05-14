@@ -4,7 +4,6 @@ import React, {
   useEffect,
   useRef,
   memo,
-  MutableRefObject,
   MouseEvent,
   TouchEvent
 } from 'react';
@@ -44,7 +43,7 @@ const GradientPanel: FC<IPropsPanel> = ({
   showGradientAngle = true,
   showGradientPosition = true
 }) => {
-  const angleNode = useRef() as MutableRefObject<HTMLDivElement>;
+  const angleNode = useRef<HTMLDivElement>();
 
   const { stops, gradient, type, modifier } = color;
 

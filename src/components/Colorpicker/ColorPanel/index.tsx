@@ -1,10 +1,4 @@
-import React, {
-  FC,
-  useState,
-  useRef,
-  useEffect,
-  MutableRefObject
-} from 'react';
+import React, { FC, useState, useRef, useEffect } from 'react';
 
 import Board from './Board';
 import Ribbon from './Ribbon';
@@ -21,7 +15,7 @@ const Panel: FC<TPropsMain> = ({
   showAlpha,
   onChange
 }) => {
-  const node = useRef() as MutableRefObject<HTMLDivElement>;
+  const node = useRef<HTMLDivElement>();
 
   const colorConvert = new TinyColor(hex) as ITinyColor;
   colorConvert.alpha = alpha;
