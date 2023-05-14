@@ -1,5 +1,5 @@
 import './_colorpicker.scss';
-import React, { Fragment, useState, FC } from 'react';
+import React, { useState, FC } from 'react';
 
 import Gradinet from './Gradient';
 import Solid from './Solid';
@@ -141,7 +141,7 @@ const ColorPicker: FC<IPropsMain> = ({
       {solid || gradient ? (
         <PopupTabs popupWidth={popupWidth}>
           <PopupTabsBody>
-            {solid ? (
+            {solid ?? (
               <Solid
                 onChange={onChangeSolid}
                 value={value}
@@ -153,10 +153,8 @@ const ColorPicker: FC<IPropsMain> = ({
                 showInputs={showInputs}
                 colorBoardHeight={colorBoardHeight}
               />
-            ) : (
-              <Fragment />
             )}
-            {gradient ? (
+            {gradient ?? (
               <Gradinet
                 onChange={onChangeGradient}
                 value={value}
@@ -173,8 +171,6 @@ const ColorPicker: FC<IPropsMain> = ({
                 showGradientPosition={showGradientPosition}
                 colorBoardHeight={colorBoardHeight}
               />
-            ) : (
-              <Fragment />
             )}
           </PopupTabsBody>
         </PopupTabs>
