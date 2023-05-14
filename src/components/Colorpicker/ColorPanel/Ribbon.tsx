@@ -10,7 +10,7 @@ const Ribbon: FC<TPropsComp> = ({
   onChange,
   setChange
 }) => {
-  const node = useRef<HTMLDivElement>();
+  const node = useRef<HTMLDivElement>(null);
 
   const removeListeners = () => {
     window.removeEventListener('mousemove', onDrag);
@@ -113,7 +113,8 @@ const Ribbon: FC<TPropsComp> = ({
   };
 
   const pointMoveTo = (coords: TCoords) => {
-    const rect = node && node.current.getBoundingClientRect();
+    if (!node.current) return;
+    const rect = node.current.getBoundingClientRect();
     const width = rect.width;
     let left = coords.x - rect.left;
     left = Math.max(0, left);

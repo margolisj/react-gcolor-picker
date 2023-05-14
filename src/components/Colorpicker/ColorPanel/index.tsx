@@ -15,7 +15,7 @@ const Panel: FC<TPropsMain> = ({
   showAlpha,
   onChange
 }) => {
-  const node = useRef<HTMLDivElement>();
+  const node = useRef<HTMLDivElement>(null);
 
   const colorConvert = new TinyColor(hex) as ITinyColor;
   colorConvert.alpha = alpha;

@@ -43,7 +43,7 @@ const GradientPanel: FC<IPropsPanel> = ({
   showGradientAngle = true,
   showGradientPosition = true
 }) => {
-  const angleNode = useRef<HTMLDivElement>();
+  const angleNode = useRef<HTMLDivElement>(null);
 
   const { stops, gradient, type, modifier } = color;
 
@@ -230,7 +230,8 @@ const GradientPanel: FC<IPropsPanel> = ({
   };
 
   const pointMoveTo = (coords: TCoords) => {
-    const rect = angleNode && angleNode.current.getBoundingClientRect();
+    if (!angleNode.current) return;
+    const rect = angleNode.current.getBoundingClientRect();
 
     const boxcx = rect.left + rect.width / 2;
     const boxcy = rect.top + rect.height / 2;

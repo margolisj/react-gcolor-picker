@@ -21,7 +21,7 @@ const Markers: FC<IPropsPanel> = ({
   format = 'rgb',
   showAlpha = true
 }) => {
-  const node = useRef<HTMLDivElement>();
+  const node = useRef<HTMLDivElement>(null);
 
   const [needDeleteActive, setNeedDeleteActive] = useState<boolean>(false);
   const [hideStop, setHideStop] = useState<boolean>(false);
@@ -110,8 +110,9 @@ const Markers: FC<IPropsPanel> = ({
   const onDrag = (e: any) => {
     const x = e.clientX;
     const y = e.clientY;
+    if (!node.current) return;
 
-    const rect = node?.current?.getBoundingClientRect();
+    const rect = node.current.getBoundingClientRect();
     const rootDistance = y - rect.y;
     if (rootDistance > 80 && stops.length > 2) {
       setHideStop(true);
@@ -130,7 +131,8 @@ const Markers: FC<IPropsPanel> = ({
     const x = e.clientX;
     const y = e.clientY;
 
-    const rect = node?.current?.getBoundingClientRect();
+    if (!node.current) return;
+    const rect = node.current.getBoundingClientRect();
     const rootDistance = y - rect.y;
     if (rootDistance > 80 && stops.length > 2) {
       setNeedDeleteActive(true);
@@ -182,7 +184,8 @@ const Markers: FC<IPropsPanel> = ({
     const x = e.targetTouches[0].clientX;
     const y = e.targetTouches[0].clientY;
 
-    const rect = node?.current?.getBoundingClientRect();
+    if (!node.current) return;
+    const rect = node.current.getBoundingClientRect();
     const rootDistance = y - rect.y;
     if (rootDistance > 80 && stops.length > 2) {
       setHideStop(true);
@@ -202,7 +205,8 @@ const Markers: FC<IPropsPanel> = ({
   };
 
   const pointMoveTo = (coords: TCoords) => {
-    const rect = node && node.current.getBoundingClientRect();
+    if (!node.current) return;
+    const rect = node.current.getBoundingClientRect();
     const width = rect.width;
     let pos = coords.x - rect.left;
     pos = Math.max(0, pos);
