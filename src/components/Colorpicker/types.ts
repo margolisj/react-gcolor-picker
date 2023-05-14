@@ -1,5 +1,3 @@
-import { ReactText } from 'react';
-
 export interface IPropsComp {
   value: string;
   format?: 'rgb' | 'hsl' | 'hex';
@@ -33,6 +31,6 @@ export type TPropsChange = {
 export interface IActiveColor {
   hex: string;
   alpha: number;
-  loc: ReactText;
-  index: ReactText;
+  loc: string | number;
+  index: string | number;
 }
