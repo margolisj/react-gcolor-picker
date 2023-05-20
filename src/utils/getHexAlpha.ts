@@ -1,6 +1,7 @@
 import tinycolor from 'tinycolor2';
+import { HexAlpha } from '../types';
 
-export default (value: string) => {
+export default (value: string): HexAlpha => {
   const defaultObject = {
     hex: '#ffffff',
     alpha: 100

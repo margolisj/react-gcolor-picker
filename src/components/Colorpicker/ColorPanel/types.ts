@@ -1,11 +1,7 @@
 import { Dispatch, SetStateAction } from 'react';
 
 import { ITinyColor } from '../../../utils/color';
-
-export type TPropsChange = {
-  alpha: number;
-  hex: string;
-};
+import { HexAlpha } from '../../../types';
 
 export type TPropsComp = {
   rootPrefixCls?: string;
@@ -31,7 +27,7 @@ export type TPropsMain = {
   hex: string;
   showAlpha?: boolean;
   colorBoardHeight?: number;
-  onChange: ({ alpha, hex }: TPropsChange) => void;
+  onChange: ({ alpha, hex }: HexAlpha) => void;
 };
 
 export type TCoords = {
