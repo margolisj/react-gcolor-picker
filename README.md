@@ -5,9 +5,9 @@ linking my fixed/updated via github.
 
 **USE AT YOUR OWN RISK. SUBJECT TO CHANGES AT MY WHIM.**
 
-### Inspired by [react-gcolor-picker](https://github.com/undind/react-gcolor-picker)
-
 ### Inspired by [gpickr](https://github.com/Simonwep/gpickr)
+
+### Inspired by [react-gcolor-picker](https://github.com/undind/react-gcolor-picker)
 
 [![NPM](https://img.shields.io/npm/v/react-gcolor-picker-2.svg)](https://www.npmjs.com/package/react-gcolor-picker-2) [![License](https://img.shields.io/npm/l/react-gcolor-picker-2.svg)](https://github.com/margolisj/react-gcolor-picker/blob/main/LICENSE)
 
