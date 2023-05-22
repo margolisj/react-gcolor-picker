@@ -1,5 +1,5 @@
 import './_colorpicker.scss';
-import React, { Fragment, useState, FC } from 'react';
+import React, { useState, FC, Fragment } from 'react';
 
 import Gradinet from './Gradient';
 import Solid from './Solid';

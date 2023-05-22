@@ -12,7 +12,7 @@ In short, when you submit code changes, your submissions are understood to be un
 
 ## Report bugs using Github's [issues](https://github.com/briandk/transcriptase-atom/issues)
 
-We use GitHub issues to track public bugs. Report a bug by [opening a new issue](https://github.com/undind/react-gcolor-picker/issues); it's that easy!
+We use GitHub issues to track public bugs. Report a bug by [opening a new issue](https://github.com/margolisj/react-gcolor-picker/issues); it's that easy!
 
 ## Repository Structure
 
@@ -26,7 +26,7 @@ This repository contains 3 folders:
 
 To setup and run a local copy:
 
-1.  Clone this repo with `git clone https://github.com/undind/react-gcolor-picker`
+1.  Clone this repo with `git clone https://github.com/margolisj/react-gcolor-picker`
 2.  Run `npm install` in the root folder
 3.  Run `npm install` in the example folder
 4.  In seperate terminal windows, run `npm start` in the root and example folders.

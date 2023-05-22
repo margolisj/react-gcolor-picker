@@ -1,5 +1,3 @@
-import { ReactText } from 'react';
-
 export interface IPropsComp {
   value: string;
   format?: 'rgb' | 'hsl' | 'hex';
@@ -25,14 +23,9 @@ export interface IPropsMain extends IPropsComp {
   popupWidth?: number;
 }
 
-export type TPropsChange = {
-  alpha: number;
-  hex: string;
-};
-
 export interface IActiveColor {
   hex: string;
   alpha: number;
-  loc: ReactText;
-  index: ReactText;
+  loc: string | number;
+  index: string | number;
 }

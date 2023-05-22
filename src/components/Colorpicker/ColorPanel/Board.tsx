@@ -1,11 +1,4 @@
-import React, {
-  FC,
-  useEffect,
-  useRef,
-  MutableRefObject,
-  MouseEvent,
-  TouchEvent
-} from 'react';
+import React, { FC, useEffect, useRef, MouseEvent, TouchEvent } from 'react';
 
 import { TinyColor } from '../../../utils';
 import { TPropsComp, TCoords } from './types';
@@ -20,7 +13,7 @@ const Board: FC<TPropsComp> = ({
   onChange,
   setChange
 }) => {
-  const node = useRef() as MutableRefObject<HTMLDivElement>;
+  const node = useRef<HTMLDivElement>(null);
 
   const removeListeners = () => {
     setChange(false);
@@ -126,7 +119,9 @@ const Board: FC<TPropsComp> = ({
   };
 
   const pointMoveTo = (pos: TCoords) => {
-    const rect = node && node.current.getBoundingClientRect();
+    if (!node.current) return;
+
+    const rect = node.current.getBoundingClientRect();
     let left = pos.x - rect.left;
     let top = pos.y - rect.top;
 

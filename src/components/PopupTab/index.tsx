@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import './_popup_tabs.scss';
 
-interface Popups {
+interface PopupProps {
   children?: any;
   activeTab?: string | 'solid' | 'gradient';
   tabName?: string;
@@ -9,11 +9,11 @@ interface Popups {
   onClick?: () => void;
 }
 
-export const PopupTabs: FC<Popups> = ({
+export const PopupTabs: FC<PopupProps> = ({
   children,
   activeTab,
   popupWidth
-}: Popups) => {
+}: PopupProps) => {
   const childrenContact = React.Children.map(children, (child) => {
     return React.cloneElement(child, {
       activeTab
@@ -27,12 +27,12 @@ export const PopupTabs: FC<Popups> = ({
   );
 };
 
-export const PopupTabsHeaderLabel: FC<Popups> = ({
+export const PopupTabsHeaderLabel: FC<PopupProps> = ({
   children,
   activeTab,
   tabName,
   onClick
-}: Popups) => {
+}: PopupProps) => {
   return (
     <div
       className={`popup_tabs-header-label${
@@ -45,10 +45,10 @@ export const PopupTabsHeaderLabel: FC<Popups> = ({
   );
 };
 
-export const PopupTabsHeader: FC<Popups> = ({
+export const PopupTabsHeader: FC<PopupProps> = ({
   children,
   activeTab
-}: Popups) => {
+}: PopupProps) => {
   const childrenContact = React.Children.map(children, (child) => {
     return React.cloneElement(child, {
       activeTab
@@ -57,7 +57,7 @@ export const PopupTabsHeader: FC<Popups> = ({
   return <div className='popup_tabs-header'>{childrenContact}</div>;
 };
 
-export const PopupTabsBody: FC<Popups> = ({ children, activeTab }) => {
+export const PopupTabsBody: FC<PopupProps> = ({ children, activeTab }) => {
   const childrenContact = React.Children.map(children, (child) => {
     return React.cloneElement(child, {
       activeTab
@@ -67,11 +67,11 @@ export const PopupTabsBody: FC<Popups> = ({ children, activeTab }) => {
   return <div className='popup_tabs-body'>{childrenContact}</div>;
 };
 
-export const PopupTabsBodyItem: FC<Popups> = ({
+export const PopupTabsBodyItem: FC<PopupProps> = ({
   children,
   activeTab,
   tabName
-}: Popups) => {
+}: PopupProps) => {
   if (activeTab === tabName) {
     return <div className='popup_tabs-body-item'>{children}</div>;
   }

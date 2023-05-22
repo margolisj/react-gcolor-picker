@@ -1,11 +1,4 @@
-import React, {
-  FC,
-  useEffect,
-  useRef,
-  MutableRefObject,
-  MouseEvent,
-  TouchEvent
-} from 'react';
+import React, { FC, useEffect, useRef, MouseEvent, TouchEvent } from 'react';
 
 import { TPropsCompAlpha, TCoords } from './types';
 
@@ -20,7 +13,7 @@ const Alpha: FC<TPropsCompAlpha> = ({
   onChange,
   setChange
 }) => {
-  const node = useRef() as MutableRefObject<HTMLDivElement>;
+  const node = useRef<HTMLDivElement>(null);
 
   const removeListeners = () => {
     window.removeEventListener('mousemove', onDrag);
@@ -134,6 +127,7 @@ const Alpha: FC<TPropsCompAlpha> = ({
   };
 
   const pointMoveTo = (coords: TCoords) => {
+    if (!node.current) return;
     const rect = node && node.current.getBoundingClientRect();
     const width = rect.width;
     let left = coords.x - rect.left;

@@ -11,7 +11,7 @@ interface IInput {
 export const getAlphaValue = (value: string) => {
   value.replace(/%/i, '');
   if (value[0] === '0' && value.length > 1) {
-    return value.substr(1);
+    return value.slice(1, 1);
   } else if (Number(value) >= 100) {
     return 100;
   } else if (!isNaN(Number(value))) {
@@ -20,13 +20,13 @@ export const getAlphaValue = (value: string) => {
   return parseInt(value);
 };
 
-export const onlyDigits = (string: string) => {
-  return string ? string.substr(0, 3).replace(/[^\d]/g, '') : '';
+export const onlyDigits = (input: string) => {
+  return input ? input.slice(0, 3).replace(/[^\d]/g, '') : '';
 };
 
 export const onlyLatins = (string: string) => {
   if (string && string.substring(0, 1) === '#') string = string.substring(1);
-  return string ? string.substr(0, 6).replace(/[^a-zA-Z0-9\s-]/gi, '') : '';
+  return string ? string.slice(0, 6).replace(/[^a-zA-Z0-9\s-]/gi, '') : '';
 };
 
 export const handlePressEnter = (e: KeyboardEvent, fn: () => void) => {
