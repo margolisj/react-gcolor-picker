@@ -4,6 +4,7 @@ import './_input_rgba.scss';
 
 import { checkFormat } from '../../utils';
 import { getAlphaValue, inputsData, handlePressEnter } from './helpers';
+import { HexAlpha } from '../../types';
 
 interface IChange {
   hex: string;
@@ -27,7 +28,7 @@ const InputRgba: FC<TProps> = ({
   onChange,
   onSubmitChange
 }) => {
-  const [color, setColor] = useState({
+  const [color, setColor] = useState<HexAlpha>({
     alpha,
     hex
   });

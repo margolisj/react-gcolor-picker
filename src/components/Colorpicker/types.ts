@@ -23,11 +23,6 @@ export interface IPropsMain extends IPropsComp {
   popupWidth?: number;
 }
 
-export type TPropsChange = {
-  alpha: number;
-  hex: string;
-};
-
 export interface IActiveColor {
   hex: string;
   alpha: number;

@@ -14,7 +14,8 @@ import {
   rgbaToHex
 } from '../../../utils';
 
-import { IPropsComp, TPropsChange, IActiveColor } from '../types';
+import { IPropsComp, IActiveColor } from '../types';
+import { HexAlpha } from '../../../types';
 
 const Gradient: FC<IPropsComp> = ({
   value = '#ffffff',
@@ -98,7 +99,7 @@ const Gradient: FC<IPropsComp> = ({
   }, [value]);
 
   const onChangeActiveColor = useCallback(
-    (value: TPropsChange) => {
+    (value: HexAlpha) => {
       setInit(false);
       setActiveColor({
         ...activeColor,

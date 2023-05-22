@@ -7,7 +7,8 @@ import DefaultColorsPanel from '../DefaultColorPanel';
 
 import { getHexAlpha, useDebounce, checkFormat } from '../../../utils';
 
-import { IPropsComp, TPropsChange } from '../types';
+import { IPropsComp } from '../types';
+import { HexAlpha } from '../../../types';
 
 const ColorPickerSolid: FC<IPropsComp> = ({
   value = '#ffffff',
@@ -50,7 +51,7 @@ const ColorPickerSolid: FC<IPropsComp> = ({
     setColor(getHexAlpha(value));
   }, [value]);
 
-  const onCompleteChange = (value: TPropsChange) => {
+  const onCompleteChange = (value: HexAlpha) => {
     setInit(false);
     setColor({
       hex: value.hex,
