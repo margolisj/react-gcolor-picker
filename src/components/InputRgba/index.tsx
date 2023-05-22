@@ -124,7 +124,7 @@ const InputRgba: FC<TProps> = ({
                 aria-label={labelArea}
                 onChange={(e) => onChangeInput(e)}
                 onBlur={onHandleSubmit}
-                onKeyPress={(e) => handlePressEnter(e, onHandleSubmit)}
+                onKeyDown={(e) => handlePressEnter(e, onHandleSubmit)}
               />
               <div className={labelClass}>{labelText}</div>
             </div>
