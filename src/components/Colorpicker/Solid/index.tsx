@@ -3,7 +3,7 @@ import tinycolor from 'tinycolor2';
 
 import ColorPickerPanel from '../ColorPanel';
 import InputRgba from '../../InputRgba';
-import DefaultColorsPanel from '../DefaultColorPanel';
+import DefaultColorsPanel from '../DefaultColorsPanel';
 
 import { getHexAlpha, useDebounce, checkFormat } from '../../../utils';
 

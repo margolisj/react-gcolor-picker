@@ -4,7 +4,7 @@ import tinyColor from 'tinycolor2';
 import ColorPanel from '../ColorPanel';
 import InputRgba from '../../InputRgba';
 import GradientPanel from '../GradientPanel';
-import DefaultColorsPanel from '../DefaultColorPanel';
+import DefaultColorsPanel from '../DefaultColorsPanel';
 
 import {
   parseGradient,
