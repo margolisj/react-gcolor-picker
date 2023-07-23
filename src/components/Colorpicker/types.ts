@@ -1,3 +1,5 @@
+import { TabValue } from '../../types';
+
 export interface IPropsComp {
   value: string;
   format?: 'rgb' | 'hsl' | 'hex';
@@ -12,7 +14,7 @@ export interface IPropsComp {
   showGradientPosition?: boolean;
   colorBoardHeight?: number;
   defaultColors?: string[];
-  defaultActiveTab?: string | undefined;
+  defaultActiveTab?: TabValue;
   onChangeTabs?: (tab: string) => void;
   onChange: (value: string) => void;
 }

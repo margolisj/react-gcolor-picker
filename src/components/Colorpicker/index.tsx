@@ -1,7 +1,7 @@
 import './_colorpicker.scss';
 import React, { useState, FC, Fragment } from 'react';
 
-import Gradinet from './Gradient';
+import Gradient from './Gradient';
 import Solid from './Solid';
 
 import {
@@ -14,6 +14,7 @@ import {
 import { getIndexActiveTag } from './helper';
 
 import { IPropsMain } from './types';
+import { TabValue } from '../../types';
 
 const DEFAULT_COLORS = [
   '#FF6900',
@@ -63,7 +64,7 @@ const ColorPicker: FC<IPropsMain> = ({
   onChangeTabs,
   onChange = () => ({})
 }) => {
-  const [activeTab, setActiveTab] = useState<string>(
+  const [activeTab, setActiveTab] = useState<TabValue>(
     defaultActiveTab || getIndexActiveTag(value)
   );
 
@@ -75,7 +76,7 @@ const ColorPicker: FC<IPropsMain> = ({
     onChange(value);
   };
 
-  const onChangeTab = (tab: string) => {
+  const onChangeTab = (tab: TabValue) => {
     setActiveTab(tab);
     if (typeof onChangeTabs === 'function' && !!onChangeTabs) {
       onChangeTabs(tab);
@@ -114,7 +115,7 @@ const ColorPicker: FC<IPropsMain> = ({
             />
           </PopupTabsBodyItem>
           <PopupTabsBodyItem tabName='gradient'>
-            <Gradinet
+            <Gradient
               onChange={onChangeGradient}
               value={value}
               format={format}
@@ -157,7 +158,7 @@ const ColorPicker: FC<IPropsMain> = ({
               <Fragment />
             )}
             {gradient ? (
-              <Gradinet
+              <Gradient
                 onChange={onChangeGradient}
                 value={value}
                 format={format}
