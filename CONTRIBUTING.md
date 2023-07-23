@@ -29,7 +29,7 @@ To setup and run a local copy:
 1.  Clone this repo with `git clone https://github.com/margolisj/react-gcolor-picker`
 2.  Run `npm install` in the root folder
 3.  Run `npm install` in the example folder
-4.  In seperate terminal windows, run `npm start` in the root and example folders.
+4.  In separate terminal windows, run `npm start` in the root and example folders.
 
 You should now be up and running with live browser reloading of the example website while you work on React components in the /src folder.
 
