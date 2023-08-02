@@ -1,7 +1,7 @@
 import './_picker.scss';
 import React, { useState, useEffect, FC } from 'react';
 
-import ReactGPickerComp from '../src/components/Colorpicker';
+import { ColorPicker } from '../src/components/Colorpicker';
 import { IPropsMain } from '../src/components/Colorpicker/types';
 
 const ReactGPicker: FC<IPropsMain> = ({
@@ -30,7 +30,7 @@ const ReactGPicker: FC<IPropsMain> = ({
         {color}
       </span>
       <div className='centered'>
-        <ReactGPickerComp
+        <ColorPicker
           value={color}
           gradient={gradient}
           format={format}
