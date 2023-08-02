@@ -28,7 +28,7 @@
   ],
   "scripts": {
     "build": "rollup -c",
-    "start": "clean && rollup -c -w",
+    "start": "pnpm clean && rollup -c -w",
     "clean": "rimraf ./dist/*",
     "test": "run-s lint test:unit test:build",
     "test:build": "run-s build",
