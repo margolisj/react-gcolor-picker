@@ -16,10 +16,12 @@
   "author": "undind and margolisj",
   "license": "MIT",
   "repository": "margolisj/react-gcolor-picker",
+
   "main": "dist/index.js",
   "module": "dist/index.es.js",
-  "source": "src/index.tsx",
   "types": "dist/index.d.ts",
+  "source": "src/index.tsx",
+
   "engines": {
     "node": ">=10"
   },
@@ -33,7 +35,7 @@
     "test": "run-s lint test:unit test:build",
     "test:build": "run-s build",
     "lint": "eslint . --ext js,ts,tsx,mjs",
-    "lint:fix": "eslint . --fix",
+    "lint:fix": "pnpm lint --fix",
     "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
     "predeploy": "storybook build",
