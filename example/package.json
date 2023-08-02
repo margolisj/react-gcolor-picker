@@ -15,7 +15,7 @@
     "react-dom": "file:../node_modules/react-dom",
     "react-scripts": "file:../node_modules/react-scripts",
     "typescript": "file:../node_modules/typescript",
-    "react-gcolor-picker": "file:.."
+    "react-gcolor-picker-2": "file:.."
   },
   "scripts": {
     "start": "react-scripts start",
