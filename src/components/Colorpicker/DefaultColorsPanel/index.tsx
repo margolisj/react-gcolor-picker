@@ -7,7 +7,7 @@ import {
   rgbaToArray,
   rgbaToHex
 } from '../../../utils';
-import { checkValidColorsArray } from '../../Colorpicker/helper';
+import { checkValidColorsArray } from '../helper';
 
 import { IColor } from '../GradientPanel/types';
 import { IActiveColor } from '../types';
@@ -28,19 +28,19 @@ const DefaultColorPanel: FC<IProps> = ({
   colorType
 }) => {
   const [active, setActive] = useState<number>(-1);
-  const [formatedDefColors, setFormatedDefColors] = useState<
+  const [formattedDefColors, setFormattedDefColors] = useState<
     Array<string | IColor>
   >([]);
 
   useEffect(() => {
     if (colorType === 'gradient') {
-      setFormatedDefColors(
+      setFormattedDefColors(
         checkValidColorsArray(defaultColors, 'grad').map((item: string) => {
           return parseGradient(item);
         })
       );
     } else {
-      setFormatedDefColors(checkValidColorsArray(defaultColors, 'solid'));
+      setFormattedDefColors(checkValidColorsArray(defaultColors, 'solid'));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -81,7 +81,7 @@ const DefaultColorPanel: FC<IProps> = ({
 
   return (
     <div className='default-color-panel'>
-      {formatedDefColors.map((item: string | IColor, index: number) => {
+      {formattedDefColors.map((item: string | IColor, index: number) => {
         switch (colorType) {
           case 'gradient':
             if (typeof item !== 'string') {

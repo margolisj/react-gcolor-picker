@@ -1,9 +1,10 @@
 import tinycolor from 'tinycolor2';
 
 import { rgbaToArray, isValidRgba, validGradient } from '../../utils';
+import { TabValue } from '../../types';
 
-export const getIndexActiveTag = (value: string) => {
-  let tab = 'solid';
+export const getIndexActiveTag = (value: string): TabValue => {
+  let tab: TabValue = 'solid';
   const validValue = tinycolor(value).isValid();
 
   if (value) {

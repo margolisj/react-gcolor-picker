@@ -33,9 +33,7 @@
     "noFallthroughCasesInSwitch": true,
     "downlevelIteration": true
   },
-  "include": [
-    "src"
-  ],
+  "include": [ "src", "storybook.test.ts", "storybook.test.js"  ],
   "exclude": [
     "node_modules",
     "build",

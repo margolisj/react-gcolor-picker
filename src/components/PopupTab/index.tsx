@@ -3,7 +3,7 @@ import './_popup_tabs.scss';
 
 interface PopupProps {
   children?: any;
-  activeTab?: string | 'solid' | 'gradient';
+  activeTab?: 'solid' | 'gradient';
   tabName?: string;
   popupWidth?: number;
   onClick?: () => void;
