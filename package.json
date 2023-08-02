@@ -38,8 +38,8 @@
     "test:watch": "react-scripts test --env=jsdom",
     "predeploy": "storybook build",
     "deploy": "gh-pages -d storybook-static/",
-    "release": "yarn test && release-it",
-    "release:dry": "yarn test && release-it --dry-run",
+    "release": "pnpm test && release-it",
+    "release:dry": "pnpm test && release-it --dry-run",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
