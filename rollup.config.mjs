@@ -19,13 +19,13 @@ export default {
       format: 'cjs',
       exports: 'named',
       sourcemap: true
-    },
-    {
-      file: pkg.module,
-      format: 'es',
-      exports: 'named',
-      sourcemap: true
     }
+    // {
+    //   file: pkg.module,
+    //   format: 'es',
+    //   exports: 'named',
+    //   sourcemap: true
+    // }
   ],
   plugins: [
     external(),
@@ -34,9 +34,10 @@ export default {
     typescript({
       // rollupCommonJSResolveHack: true,
       // clean: true
-    }),
-    commonjs({
-      include: ['node_modules/**']
     })
+    // commonjs({
+    //   include: ['node_modules/**'],
+    //   extensions: ['.js', '.ts']
+    // })
   ]
 };

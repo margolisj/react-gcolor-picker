@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import ReactGPicker from 'react-gcolor-picker';
+import ReactGPicker from 'react-gcolor-picker-2';
 
 function App() {
   const [color, setColor] = useState('#fff');
