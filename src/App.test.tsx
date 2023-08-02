@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
-import ReactGPicker from './components/Colorpicker';
+import { ColorPicker } from './components/Colorpicker';
 
 const onChangeFn = jest.fn();
 const onChangeTabsFn = jest.fn();
@@ -27,7 +27,7 @@ const props = {
 describe('Test Suites Color Picker', () => {
   let wrapper: ReactWrapper;
   beforeEach(() => {
-    wrapper = mount(<ReactGPicker {...props} />);
+    wrapper = mount(<ColorPicker {...props} />);
   });
 
   afterEach(() => {
@@ -42,7 +42,7 @@ describe('Test Suites Color Picker', () => {
     expect(wrapper.props()).toEqual(props);
   });
 
-  it('Check inputs deafult values', () => {
+  it('Check inputs default values', () => {
     const hexInput = wrapper.find('.input_rgba-hex input');
     const alphaInput = wrapper.find('.input_rgba-alpha input');
 
@@ -81,10 +81,10 @@ describe('Test Suites Color Picker', () => {
 
   it('Check hsla, rgba and name value', () => {
     const pickerRgba = mount(
-      <ReactGPicker {...props} value='rgba(0, 0, 0, 0.5)' />
+      <ColorPicker {...props} value='rgba(0, 0, 0, 0.5)' />
     );
-    const pickerNamed = mount(<ReactGPicker {...props} value='black' />);
-    const pickerHsl = mount(<ReactGPicker {...props} value='hsl(0,0%,0%)' />);
+    const pickerNamed = mount(<ColorPicker {...props} value='black' />);
+    const pickerHsl = mount(<ColorPicker {...props} value='hsl(0,0%,0%)' />);
 
     expect(
       pickerRgba
@@ -103,7 +103,7 @@ describe('Test Suites Color Picker', () => {
 
   it('Check Gradient picker tab', () => {
     const withGradient: ReactWrapper = mount(
-      <ReactGPicker {...props} gradient={true} defaultActiveTab='solid' />
+      <ColorPicker {...props} gradient={true} defaultActiveTab='solid' />
     );
     const headers = withGradient.find('.popup_tabs-header-label');
     headers.at(1).simulate('click');
@@ -119,8 +119,8 @@ describe('Test Suites Color Picker', () => {
   });
 
   it('Check default colors panel length', () => {
-    const defaulPanel = wrapper.find('.default-color-panel_item');
+    const defaultPanel = wrapper.find('.default-color-panel_item');
 
-    expect(defaulPanel.length).toBe(12);
+    expect(defaultPanel.length).toBe(12);
   });
 });

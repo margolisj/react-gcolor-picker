@@ -19,22 +19,27 @@ export default {
       format: 'cjs',
       exports: 'named',
       sourcemap: true
+    },
+    {
+      file: pkg.module,
+      format: 'es',
+      exports: 'named',
+      sourcemap: true
     }
-    // {
-    //   file: pkg.module,
-    //   format: 'es',
-    //   exports: 'named',
-    //   sourcemap: true
-    // }
   ],
   plugins: [
     external(),
     nodeResolve(),
+    typescript({ tsconfig: './tsconfig.json' }),
     sass({ insert: true }),
-    typescript({
-      // rollupCommonJSResolveHack: true,
-      // clean: true
+    commonjs({
+      extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      include: /node_modules/
     })
+    // typescript({
+    //   // rollupCommonJSResolveHack: true,
+    //   // clean: true
+    // })
     // commonjs({
     //   include: ['node_modules/**'],
     //   extensions: ['.js', '.ts']

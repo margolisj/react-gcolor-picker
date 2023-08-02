@@ -1,3 +1,1 @@
-import ReactGPicker from './components/Colorpicker';
-
-export default ReactGPicker;
+export { ColorPicker as ReactGPicker } from './components/Colorpicker';
