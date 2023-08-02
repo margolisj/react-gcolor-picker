@@ -43,7 +43,7 @@ const DEFAULT_COLORS = [
   'radial-gradient(circle at center, yellow 0%, #009966 50%, purple 100%)'
 ];
 
-const ColorPicker: FC<IPropsMain> = ({
+export const ColorPicker: FC<IPropsMain> = ({
   value = '#ffffff',
   format = 'rgb',
   gradient = false,
@@ -183,5 +183,3 @@ const ColorPicker: FC<IPropsMain> = ({
     </>
   );
 };
-
-export default ColorPicker;
