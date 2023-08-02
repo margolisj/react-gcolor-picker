@@ -66,7 +66,7 @@ export default (str: string) => {
       gradient === 'Failed to find gradient' ||
       gradient === 'Not correct position'
     ) {
-      console.log('Incorrect gradient value');
+      // console.log('Incorrect gradient value');
       return defaultStops;
     }
 
@@ -77,7 +77,7 @@ export default (str: string) => {
 
     const [, type, content] = str.match(/^(\w+)-gradient\((.*)\)$/i) || [];
     if (!type || !content) {
-      console.log('Incorrect gradient value');
+      // console.log('Incorrect gradient value');
       return defaultStops;
     }
 
