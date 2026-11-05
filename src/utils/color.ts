@@ -1,226 +1,91 @@
-import tinycolor, { Instance, ColorFormats } from 'tinycolor2';
+import tinycolor from 'tinycolor2';
 
-interface IInput {
+import type { ColorFormat } from '../types';
+
+/** A solid color: `hex` is `#rrggbb` (lowercase), `alpha` is 0–100. */
+export interface HexAlpha {
+  hex: string;
+  alpha: number;
+}
+
+/** HSV color: `h` is 0–360, `s` and `v` are 0–1. */
+export interface Hsv {
   h: number;
   s: number;
   v: number;
 }
 
-export interface ITinyColor {
-  color: Instance;
-  alphaValue: number;
-  blueValue: number;
-  brightnessValue: number;
-  greenValue: number;
-  hueValue: number;
-  lightnessValue: number;
-  saturationValue: number;
-  redValue: number;
-  initRgb(): void;
-  initHsb(): void;
-  toHexString(): string;
-  toRgbString(): string;
-  toHsv(): ColorFormats.HSVA;
-  hex: string;
-  hue: number;
-  saturation: number;
-  lightness: number;
-  brightness: number;
-  red: number;
-  green: number;
-  blue: number;
-  alpha: number;
-  RGB: number[];
-  HSB: number[];
-}
+export const DEFAULT_SOLID: HexAlpha = { hex: '#ffffff', alpha: 100 };
 
-export default class Color {
-  color: Instance;
-  alphaValue: number;
-  hueValue: number;
-  saturationValue: number;
-  brightnessValue: number;
-  redValue: number;
-  greenValue: number;
-  blueValue: number;
-  lightnessValue: number;
+const GRADIENT_RE = /(?:linear|radial)-gradient\s*\(/i;
 
-  constructor(input: IInput | string) {
-    this.color = tinycolor(input);
+export const isGradientString = (value: string | undefined): boolean =>
+  !!value && GRADIENT_RE.test(value);
 
-    this.initRgb();
-    this.initHsb();
-
-    const initAlpha = this.color.toRgb().a;
-    this.alphaValue = Math.min(1, initAlpha) * 100;
-
-    this.hueValue = this.color.toHsv().h;
-    this.saturationValue = this.color.toHsv().s;
-    this.brightnessValue = this.color.toHsv().v;
-    this.redValue = this.color.toRgb().r;
-    this.greenValue = this.color.toRgb().g;
-    this.blueValue = this.color.toRgb().b;
-    this.lightnessValue = 0;
-  }
-
-  static isValidHex(hex: string) {
-    return tinycolor(hex).isValid();
-  }
-
-  initRgb = () => {
-    const { r, g, b } = this.color.toRgb();
-
-    this.redValue = r;
-    this.greenValue = g;
-    this.blueValue = b;
+/** Parses any solid CSS color tinycolor understands. Returns `null` for gradients / invalid input. */
+export const parseSolid = (value: string | undefined): HexAlpha | null => {
+  if (!value || isGradientString(value)) return null;
+  const color = tinycolor(value.trim());
+  if (!color.isValid()) return null;
+  return {
+    hex: color.toHexString(),
+    alpha: Math.round(color.getAlpha() * 100)
   };
+};
 
-  initHsb = () => {
-    const { h, s, v } = this.color.toHsv();
+/** Like `parseSolid`, but falls back to white for empty / invalid input. */
+export const toHexAlpha = (value: string | undefined): HexAlpha =>
+  parseSolid(value) ?? DEFAULT_SOLID;
 
-    this.hueValue = h;
-    this.saturationValue = s;
-    this.brightnessValue = v;
-  };
+const toTinycolor = (color: HexAlpha | string) =>
+  typeof color === 'string'
+    ? tinycolor(color)
+    : tinycolor(color.hex).setAlpha(color.alpha / 100);
 
-  toHexString = () => {
-    return this.color.toHexString();
-  };
-
-  toRgbString = () => {
-    return this.color.toRgbString();
-  };
-
-  toHsv = () => {
-    return this.color.toHsv();
-  };
-
-  get hex() {
-    return this.color.toHex();
+/**
+ * Formats a color for output. When `includeAlpha` is false the color is made
+ * opaque, so every format behaves the same way when the alpha UI is hidden.
+ */
+export const formatColor = (
+  color: HexAlpha | string,
+  format: ColorFormat,
+  includeAlpha = true
+): string => {
+  const c = toTinycolor(color);
+  if (!includeAlpha) c.setAlpha(1);
+  switch (format) {
+    case 'hex':
+      return c.getAlpha() < 1 ? c.toHex8String() : c.toHexString();
+    case 'hsl':
+      return c.toHslString();
+    case 'rgb':
+    default:
+      return c.toRgbString();
   }
+};
 
-  set hue(value) {
-    this.color = tinycolor({
-      h: value,
-      s: this.saturation,
-      v: this.brightness
-    });
+/** `rgb(...)` / `rgba(...)` string, used for gradient stops internally. */
+export const toRgbString = (color: HexAlpha | string): string =>
+  toTinycolor(color).toRgbString();
 
-    this.initRgb();
-    this.hueValue = value;
-  }
+/** Normalized key for comparing colors regardless of their notation. */
+export const colorKey = (color: HexAlpha | string): string =>
+  toTinycolor(color).toHex8String();
 
-  get hue() {
-    return this.hueValue;
-  }
+/**
+ * HSV for a hex color. Achromatic colors (grays, black) have no hue, so the
+ * previous hue is kept and the hue slider doesn't jump back to red.
+ */
+export const hexToHsv = (hex: string, fallbackHue = 0): Hsv => {
+  const { h, s, v } = tinycolor(hex).toHsv();
+  return { h: s === 0 || v === 0 ? fallbackHue : h, s, v };
+};
 
-  set saturation(value) {
-    this.color = tinycolor({
-      h: this.hue,
-      s: value,
-      v: this.brightness
-    });
+export const hsvToHex = ({ h, s, v }: Hsv): string =>
+  tinycolor({ h, s, v }).toHexString();
 
-    this.initRgb();
-    this.saturationValue = value;
-  }
-
-  get saturation() {
-    return this.saturationValue;
-  }
-
-  set lightness(value) {
-    this.color = tinycolor({
-      h: this.hue,
-      s: this.saturation,
-      l: value
-    });
-
-    this.initRgb();
-    this.lightnessValue = value;
-  }
-
-  get lightness() {
-    return this.lightnessValue;
-  }
-
-  set brightness(value) {
-    this.color = tinycolor({
-      h: this.hue,
-      s: this.saturation,
-      v: value
-    });
-
-    this.initRgb();
-    this.brightnessValue = value;
-  }
-
-  get brightness() {
-    return this.brightnessValue;
-  }
-
-  // red
-  set red(value) {
-    const rgb = this.color.toRgb();
-    this.color = tinycolor({
-      ...rgb,
-      r: value
-    });
-
-    this.initHsb();
-    this.redValue = value;
-  }
-
-  get red() {
-    return this.redValue;
-  }
-
-  // green
-  set green(value) {
-    const rgb = this.color.toRgb();
-    this.color = tinycolor({
-      ...rgb,
-      g: value
-    });
-
-    this.initHsb();
-    this.greenValue = value;
-  }
-
-  get green() {
-    return this.greenValue;
-  }
-
-  // blue
-  set blue(value) {
-    const rgb = this.color.toRgb();
-    this.color = tinycolor({
-      ...rgb,
-      b: value
-    });
-
-    this.initHsb();
-    this.blueValue = value;
-  }
-
-  get blue() {
-    return this.blueValue;
-  }
-
-  // alpha
-  set alpha(value) {
-    this.color.setAlpha(value / 100);
-  }
-
-  get alpha() {
-    return this.color.getAlpha() * 100;
-  }
-
-  get RGB() {
-    return [this.red, this.green, this.blue];
-  }
-
-  get HSB() {
-    return [this.hue, this.saturation, this.brightness];
-  }
-}
+/** `{ r, g, b }` of a hex color. */
+export const hexToRgb = (hex: string) => {
+  const { r, g, b } = tinycolor(hex).toRgb();
+  return { r, g, b };
+};

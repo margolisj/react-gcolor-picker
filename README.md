@@ -1,140 +1,149 @@
-# React gradient color picker
+# react-gcolor-picker-2
 
-This is being published publicly to make my life a little eaiser using the previous version than
-linking my fixed/updated via github.
+Solid color (hex, rgb(a), hsl(a)) and gradient (linear and radial) picker for **React 18 and 19**.
 
-**USE AT YOUR OWN RISK. SUBJECT TO CHANGES AT MY WHIM.**
-
-### Inspired by [gpickr](https://github.com/Simonwep/gpickr)
-
-### Inspired by [react-gcolor-picker](https://github.com/undind/react-gcolor-picker)
-
-[![NPM](https://img.shields.io/npm/v/react-gcolor-picker-2.svg)](https://www.npmjs.com/package/react-gcolor-picker-2) [![License](https://img.shields.io/npm/l/react-gcolor-picker-2.svg)](https://github.com/margolisj/react-gcolor-picker/blob/main/LICENSE)
-
-**[Demo](https://margolisj.github.io/react-gcolor-picker/)**
+A maintained fork of [react-gcolor-picker](https://github.com/undind/react-gcolor-picker), inspired by [gpickr](https://github.com/Simonwep/gpickr).
 
 ## Install
 
-### **Important: this component uses React Hooks and works on React version 16.8.0 and higher**
-
----
-
 ```bash
-npm install --save react-gcolor-picker-2
+pnpm add react-gcolor-picker-2
 ```
 
-OR
-
-```bash
-yarn add react-gcolor-picker-2
-```
+`react` (18 or 19) is a peer dependency. There is no CSS to import: the stylesheet is injected the first time a picker renders.
 
 ## Usage
 
 ```tsx
-import React from 'react';
+import { useState } from 'react';
+import { ReactGPicker } from 'react-gcolor-picker-2';
 
-import ReactGPicker from 'react-gcolor-picker-2';
-
-function App() {
-  const onChange = (value) => {
-    console.log(value);
-  };
-
-  return <ReactGPicker value='red' onChange={onChange} />;
+export function Example() {
+  const [color, setColor] = useState('#ff6900');
+  return <ReactGPicker value={color} onChange={setColor} gradient />;
 }
+```
 
-export default App;
+The package has both a named (`ReactGPicker`) and a default export, so it can be lazy-loaded directly:
+
+```tsx
+const ReactGPicker = lazy(() => import('react-gcolor-picker-2'));
+```
+
+### Applying colors from outside (eyedropper, palettes)
+
+The `ref` exposes `applyColor(color)`, which behaves as if the user had picked the color: it replaces the solid color, or recolors the **active gradient stop** (a gradient string replaces the whole gradient). It triggers `onChange`.
+
+```tsx
+const pickerRef = useRef<ReactGPickerHandle>(null);
+
+<ReactGPicker ref={pickerRef} value={color} onChange={setColor} gradient />
+<button onClick={async () => pickerRef.current?.applyColor((await new EyeDropper().open()).sRGBHex)}>
+  Pick from screen
+</button>
 ```
 
 ## Props
 
-| Attribute            |    Type    |           Default           | Description                                                                                           |
-| :------------------- | :--------: | :-------------------------: | :---------------------------------------------------------------------------------------------------- |
-| value                |  `string`  |          `#ffffff`          | Default color value. Accept: rgba/rgb, hsla/hsl, named colors                                         |
-| format               |  `string`  |            `rgb`            | Return value format. Accept: 'rgb', 'hex', 'hsl'                                                      |
-| gradient             |   `bool`   |           `false`           | Show gradient color panel                                                                             |
-| solid                |   `bool`   |           `true`            | Show solid color panel                                                                                |
-| debounceMS           |  `number`  |            `300`            | Debounce ms value                                                                                     |
-| debounce             |   `bool`   |           `true`            | Debouce off/on                                                                                        |
-| showAlpha            |   `bool`   |           `true`            | Show/hide alpha input and range                                                                       |
-| showInputs           |   `bool`   |           `true`            | Show/hide inputs alpha and color                                                                      |
-| showGradientResult   |   `bool`   |           `true`            | Show/hide gradient result fields(angle, mode, position)                                               |
-| showGradientStops    |   `bool`   |           `true`            | Show/hide gradient color stops                                                                        |
-| showGradientMode     |   `bool`   |           `true`            | Show/hide gradient color mode switcher                                                                |
-| showGradientAngle    |   `bool`   |           `true`            | Show/hide gradient angle for linear-gradient                                                          |
-| showGradientPosition |   `bool`   |           `true`            | Show/hide gradient position for radial-gradient                                                       |
-| popupWidth           |  `number`  |            `267`            | Popup width                                                                                           |
-| colorBoardHeight     |  `number`  |            `120`            | Board color height                                                                                    |
-| defaultColors        |  `array`   | [List](#default-color-list) | Default colors array for panel picker                                                                 |
-| defaultActiveTab     |  `string`  |         `undefined`         | Default value for active tab when initializing the component, takes two values: `solid` or `gradient` |
-| onChangeTabs         | `function` |           `null`            | Default onChange function detect when tabs change and return one of the values: `solid` or `gradient` |
-| onChange             | `function` |           `null`            | Default onChange function returns string value in the given format                                    |
+| Prop                   | Type                      | Default                              | Description                                                                                         |
+| :--------------------- | :------------------------ | :----------------------------------- | :-------------------------------------------------------------------------------------------------- |
+| `value`                | `string`                  | `undefined`                          | Current color: hex, rgb(a), hsl(a), named, `transparent`, or a linear / radial gradient. See below. |
+| `onChange`             | `(value: string) => void` |                                      | Called with the new color (in `format`) when the user changes it.                                   |
+| `format`               | `'rgb' \| 'hex' \| 'hsl'` | `'rgb'`                              | Output format.                                                                                      |
+| `solid`                | `boolean`                 | `true`                               | Show the solid color picker.                                                                        |
+| `gradient`             | `boolean`                 | `false`                              | Show the gradient picker. With `solid` too, both are shown as tabs.                                 |
+| `defaultActiveTab`     | `'solid' \| 'gradient'`   | from `value`                         | Initial tab when both are shown.                                                                    |
+| `onChangeTabs`         | `(tab) => void`           |                                      | Called when the user switches tabs.                                                                 |
+| `debounce`             | `boolean`                 | `true`                               | Debounce `onChange`. When `false`, changes are emitted immediately.                                 |
+| `debounceMS`           | `number`                  | `300`                                | Debounce delay. `0` emits synchronously.                                                            |
+| `showAlpha`            | `boolean`                 | `true`                               | Show the alpha slider and input. When `false`, emitted colors are opaque.                           |
+| `showInputs`           | `boolean`                 | `true`                               | Show the hex / alpha inputs.                                                                        |
+| `showGradientResult`   | `boolean`                 | `true`                               | Show the gradient preview (mode, angle and position controls live on it).                           |
+| `showGradientStops`    | `boolean`                 | `true`                               | Show the gradient stop editor.                                                                      |
+| `showGradientMode`     | `boolean`                 | `true`                               | Show the linear / radial switch.                                                                    |
+| `showGradientAngle`    | `boolean`                 | `true`                               | Allow rotating a linear gradient.                                                                   |
+| `showGradientPosition` | `boolean`                 | `true`                               | Show the radial position selector.                                                                  |
+| `popupWidth`           | `number \| string`        | `267`                                | Width. Numbers are pixels; strings are used as-is (e.g. `'100%'`).                                  |
+| `colorBoardHeight`     | `number`                  | `120`                                | Height of the saturation / brightness board in pixels.                                              |
+| `defaultColors`        | `readonly string[]`       | [`DEFAULT_COLORS`](src/constants.ts) | Swatches. Solid colors show on the solid tab, gradients on the gradient tab. `[]` hides them.       |
+| `className`            | `string`                  |                                      | Extra class for the root element.                                                                   |
 
-When passing a value for a gradient, you must specify the position of all colors. Otherwise the component will throw an exception.
-For example:
+Types `ReactGPickerProps`, `ReactGPickerHandle`, `ColorFormat` and `TabValue` are exported.
 
-### Wrong
+### How `value` and `onChange` interact
 
-```
-linear-gradient(180deg, #000000,#ff0000)
-```
+- `onChange` fires only for user changes (or `applyColor`), never on mount or because `value` changed.
+- An empty string / `undefined` value means "no color": the picker shows its defaults and stays quiet until the user picks something.
+- When you store the emitted value and pass it back, the picker recognizes it and keeps its internal state (active gradient stop, hue of grays, in-progress drags). Any other change to `value` is adopted.
+- A pending debounced change is flushed, not dropped, when the picker unmounts.
 
-### Correct
+### Gradients
 
-```
-linear-gradient(180deg, #000000 0%,#ff0000 100%)
-```
+- `linear-gradient(...)` with an angle (`deg`, `turn`, `rad`, `grad`) or a `to <side>` direction, and `radial-gradient(...)` with `circle at <position>` (the nine positions of the position grid).
+- Stop positions must be percentages. Missing positions are filled in the same way CSS does (first 0%, last 100%, others spread evenly), and fractional positions are preserved.
+- A leading `background:` / `background-image:` and a trailing `;` are accepted.
+- Output looks like `linear-gradient(180deg, rgb(0, 0, 0) 0.00%,rgb(255, 0, 0) 100.00%)`, with stops sorted by position and colors in `format`.
+- Values the picker can't edit (e.g. `conic-gradient`, multiple backgrounds, `px` positions) fall back to a default gradient.
 
-If you are using a radial gradient a list of possible directions for it:
+### Interaction
 
-```
-circle at left top
-circle at center top
-circle at right top
-circle at left
-circle at center
-circle at right
-circle at left bottom
-circle at center bottom
-circle at right bottom
-```
+- Drag with mouse, touch or pen. Gradient angle drags snap to 45° (22.5° with Shift, 11.25° with Ctrl).
+- Click the stop track to add a stop. Remove a stop by double-clicking it, pressing Delete, or dragging it below the track.
+- Keyboard: the board, hue, alpha and stops are sliders (arrows, Shift for ×10, Page Up/Down, Home/End). The alpha input steps with ArrowUp / ArrowDown. Tabs, swatches and gradient controls work with Enter / Space.
 
-## Default color list
+## Styling
 
-```
-'#FF6900',
-'#FCB900',
-'#7BDCB5',
-'#00D084',
-'#8ED1FC',
-'#0693E3',
-'#ABB8C3',
-'#607d8b',
-'#EB144C',
-'#F78DA7',
-'#ba68c8',
-'#9900EF',
-'linear-gradient(0deg, rgb(255, 177, 153) 0%, rgb(255, 8, 68) 100%)',
-'linear-gradient(270deg, rgb(251, 171, 126) 8.00%, rgb(247, 206, 104) 92.00%)',
-'linear-gradient(315deg, rgb(150, 230, 161) 8.00%, rgb(212, 252, 121) 92.00%)',
-'linear-gradient(to left, rgb(249, 240, 71) 0%, rgb(15, 216, 80) 100%)',
-'linear-gradient(315deg, rgb(194, 233, 251) 8.00%, rgb(161, 196, 253) 92.00%)',
-'linear-gradient(0deg, rgb(0, 198, 251) 0%, rgb(0, 91, 234) 100%)',
-'linear-gradient(0deg, rgb(167, 166, 203) 0%, rgb(137, 137, 186) 51.00%, rgb(137, 137, 186) 100%)',
-'linear-gradient(0deg, rgb(80, 82, 133) 0%, rgb(88, 94, 146) 15.0%, rgb(101, 104, 159) 28.00%, rgb(116, 116, 176) 43.00%, rgb(126, 126, 187) 57.00%, rgb(131, 137, 199) 71.00%, rgb(151, 149, 212) 82.00%, rgb(162, 161, 220) 92.00%, rgb(181, 174, 228) 100%)',
-'linear-gradient(270deg, rgb(255, 126, 179) 0%, rgb(255, 117, 140) 100%)',
-'linear-gradient(90deg, rgb(120, 115, 245) 0%, rgb(236, 119, 171) 100%)',
-'linear-gradient(45deg, #2e266f 0.00%, #9664dd38 100.00%)',
-'radial-gradient(circle at center, yellow 0%, #009966 50%, purple 100%)'
+The stylesheet is added once per document (into `<head>`, before other styles, so your rules win on equal specificity), including when the picker renders inside an iframe. Class names are stable, e.g.:
+
+```css
+.my-picker .input_rgba .input_rgba-wrap .input_rgba-label {
+  display: none;
+}
 ```
 
-## FAQ
+## Upgrading from 0.0.9
 
-**Q:** There's any possibility to remove extra gradient lines?
+- Requires React 18 or 19.
+- The package ships ESM (`dist/index.js`) and CommonJS (`dist/index.cjs`) through `exports`; deep imports into `dist/` are no longer possible.
+- `value` and `onChange` are optional; a default export was added; `popupWidth` accepts strings.
+- `ReactGPicker` is a `forwardRef` component now. Props derived with `Parameters<typeof ReactGPicker>[0]` include `ref`, which clashes with `@types/react` 18 when cast to `ComponentType`; use the exported `ReactGPickerProps` type instead. Lazy-loading needs no cast: `lazy(() => import('react-gcolor-picker-2'))`.
+- `showAlpha={false}` now produces opaque output in every format (previously only for `hex`).
+- Invalid hex input reverts instead of emitting black.
+- `onChangeTabs` only fires when the tab actually changes.
+- Gradient stops without positions are accepted (filled in like CSS) instead of falling back to the default gradient.
 
-**A:** Yes, you only need to drag them outside(bottom) the Gradient component area or double click on the element you want to remove.
+See [CHANGELOG.md](CHANGELOG.md) for the full list of fixes.
+
+## Development
+
+Requires Node 24 and pnpm 12 (see `.tool-versions`).
+
+```bash
+pnpm install
+pnpm storybook      # interactive playground on http://localhost:6006
+pnpm test:watch     # unit + component tests (Vitest)
+pnpm check          # lint, format, typecheck, tests, build, consumer type tests
+```
+
+| Script                 | What it does                                                             |
+| :--------------------- | :----------------------------------------------------------------------- |
+| `pnpm build`           | Builds `dist/` with tsdown (Rolldown) and checks it with publint + attw. |
+| `pnpm test`            | Runs Vitest (jsdom + Testing Library).                                   |
+| `pnpm test:coverage`   | Tests with a v8 coverage report in `coverage/`.                          |
+| `pnpm test:types`      | Type-checks consumer usage against `dist/` with TypeScript 6 and 7.      |
+| `pnpm lint` / `format` | ESLint (incl. React Compiler rules) / Prettier.                          |
+
+### Releasing
+
+CI runs on every pull request and on `master`. To publish:
+
+```bash
+pnpm version minor   # or patch / major / prerelease; commits and tags vX.Y.Z
+git push --follow-tags
+```
+
+The `Release` workflow re-runs CI, checks the tag matches `package.json`, publishes to npm (pre-releases under the `next` tag) and creates a GitHub release with generated notes. It authenticates with npm trusted publishing, or an `NPM_TOKEN` repository secret.
 
 ## License
 
-MIT ©
+MIT © undind and margolisj

@@ -1,8 +1,4 @@
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "cSpell.words": [
-    "Colorpicker",
-    "gcolor",
-    "tinycolor"
-  ]
+  "cSpell.words": ["Colorpicker", "gcolor", "tinycolor"]
 }

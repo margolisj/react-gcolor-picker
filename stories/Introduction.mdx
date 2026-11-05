@@ -1,0 +1,23 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title='Introduction' />
+
+# React gradient color picker
+
+Solid color (hex, rgb(a), hsl(a)) and gradient (linear and radial) picker for React 18 and 19.
+
+```bash
+pnpm add react-gcolor-picker-2
+```
+
+```tsx
+import { ReactGPicker } from 'react-gcolor-picker-2';
+
+export const Example = () => {
+  const [color, setColor] = useState('#ff6900');
+  return <ReactGPicker value={color} onChange={setColor} gradient />;
+};
+```
+
+The stylesheet is injected automatically the first time a picker renders, so there is no CSS to import.
+See the **ReactGPicker** stories for every prop, and the README for the full API.
