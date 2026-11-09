@@ -1,0 +1,6 @@
+# pnpm settings (pnpm >= 10 reads settings from this file).
+# Only allow install scripts for packages that genuinely need them.
+allowBuilds:
+  esbuild: true
+minimumReleaseAgeExclude:
+  - vite@8.3.6

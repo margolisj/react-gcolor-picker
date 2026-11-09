@@ -1,0 +1,17 @@
+{
+  // Type-checks consumer code against the *built* package (via package
+  // self-reference through "exports"), with TypeScript 6 and 7.
+  // Run `pnpm build` first.
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": ["ES2022", "DOM"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": false,
+    "types": []
+  },
+  "include": ["*.tsx"]
+}

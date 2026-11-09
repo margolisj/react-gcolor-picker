@@ -1,0 +1,662 @@
+/*
+ * Styles for react-gcolor-picker.
+ *
+ * This file is injected into the document by the component at runtime (see
+ * `src/styles/injectStyles.ts`), so consumers do not need to import any CSS.
+ *
+ * Selectors intentionally match the class names (and specificity) of earlier
+ * releases so that existing consumer overrides keep working.
+ */
+
+.colorpicker {
+  background-color: #fff;
+  min-width: 186px;
+  z-index: 1;
+}
+
+.colorpicker * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.colorpicker .color-picker-panel-wrap-has-alpha {
+  display: flex;
+  height: 36px;
+}
+
+.colorpicker .color-picker-panel {
+  min-width: 218px;
+  background-color: #fff;
+  box-sizing: border-box;
+  outline: none;
+  z-index: 9;
+  padding-bottom: 20px;
+  border-radius: 4px;
+  user-select: none;
+}
+
+.colorpicker .color-picker-panel-ribbon {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  border-radius: 4px;
+  background-image: linear-gradient(
+    to right,
+    #ff0000 0%,
+    #ff9900 10%,
+    #cdff00 20%,
+    #35ff00 30%,
+    #00ff66 40%,
+    #00fffd 50%,
+    #0066ff 60%,
+    #3200ff 70%,
+    #cd00ff 80%,
+    #ff0099 90%,
+    #ff0000 100%
+  );
+}
+
+.colorpicker .color-picker-panel-ribbon-bg {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 4px;
+  background-image: linear-gradient(
+    to right,
+    #ff0000 0%,
+    #ff9900 10%,
+    #cdff00 20%,
+    #35ff00 30%,
+    #00ff66 40%,
+    #00fffd 50%,
+    #0066ff 60%,
+    #3200ff 70%,
+    #cd00ff 80%,
+    #ff0099 90%,
+    #ff0000 100%
+  );
+}
+
+.colorpicker .color-picker-panel-ribbon-handler {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+}
+
+.colorpicker .color-picker-panel-ribbon span {
+  position: absolute;
+  top: -3px;
+  display: block;
+  height: 14px;
+  width: 14px;
+  padding: 1px 0;
+  border-radius: 50%;
+  margin-left: -7px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.24);
+  border: solid 2px #fff;
+  cursor: grab;
+}
+
+.colorpicker .color-picker-panel-alpha {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  border-radius: 4px;
+  background:
+    linear-gradient(to right, transparent, black),
+    url('data:image/svg+xml;utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2 2"><path fill="white" d="M1,0H2V1H1V0ZM0,1H1V2H0V1Z"/><path fill="gray" d="M0,0H1V1H0V0ZM1,1H2V2H1V1Z"/></svg>');
+  background-size: 100%, 6px;
+  background-repeat: repeat;
+  user-select: none;
+}
+
+.colorpicker .color-picker-panel-alpha-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+}
+
+.colorpicker .color-picker-panel-alpha-handler {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+}
+
+.colorpicker .color-picker-panel-alpha span {
+  position: absolute;
+  top: -3px;
+  height: 14px;
+  width: 14px;
+  padding: 1px 0;
+  margin-left: -7px;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.24);
+  border: solid 2px #fff;
+  cursor: grab;
+}
+
+.colorpicker .color-picker-panel-inner {
+  position: relative;
+}
+
+.colorpicker .color-picker-panel-wrap {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.colorpicker .color-picker-panel-wrap-ribbon {
+  height: 8px;
+}
+
+.colorpicker .color-picker-panel-wrap-alpha {
+  height: 8px;
+}
+
+.colorpicker .color-picker-panel-board {
+  position: relative;
+  margin-bottom: 16px;
+  font-size: 0;
+  user-select: none;
+}
+
+.colorpicker .color-picker-panel-board-hsv {
+  width: 100%;
+  height: 120px;
+  position: relative;
+  z-index: 1;
+  border-radius: 6px;
+}
+
+.colorpicker .color-picker-panel-board-value {
+  border-radius: 6px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  background-image: linear-gradient(to bottom, transparent 0%, #000000 100%);
+}
+
+.colorpicker .color-picker-panel-board-saturation {
+  border-radius: 6px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  background-image: linear-gradient(to right, #fff 0%, transparent 100%);
+}
+
+.colorpicker .color-picker-panel-board-handler {
+  cursor: grab;
+  user-select: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+}
+
+.colorpicker .color-picker-panel-board span {
+  position: absolute;
+  border-radius: 10px;
+  width: 14px;
+  height: 14px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.24);
+  border: solid 2px #fff;
+  left: -999px;
+  top: -999px;
+  z-index: 2;
+}
+
+.gradient-interaction {
+  flex-direction: column;
+  display: flex;
+  z-index: 1;
+}
+
+.gradient-interaction .gradient-result {
+  height: 74px;
+  width: 100%;
+  position: relative;
+  border-radius: 6px;
+  margin-top: 18px;
+  flex-grow: 1;
+  font-size: 16px;
+}
+
+.gradient-interaction .gradient-result:hover .gradient-angle {
+  opacity: 1;
+}
+
+.gradient-interaction .gradient-result .gradient-mode {
+  height: 32px;
+  width: 32px;
+  position: relative;
+  top: 20px;
+  left: 16px;
+  border: 2px solid white;
+  border-radius: 0.15em;
+  cursor: pointer;
+  opacity: 0.25;
+  transition: all 0.3s;
+}
+
+.gradient-interaction .gradient-result .gradient-mode::before {
+  position: absolute;
+  content: '';
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  transition: all 0.3s;
+}
+
+.gradient-interaction .gradient-result .gradient-mode:hover {
+  opacity: 1;
+}
+
+.gradient-interaction
+  .gradient-result
+  .gradient-mode[data-mode='linear']::before {
+  height: 2px;
+  width: 70%;
+  background: white;
+  transform: rotate(45deg);
+  border-radius: 50em;
+}
+
+.gradient-interaction
+  .gradient-result
+  .gradient-mode[data-mode='radial']::before {
+  height: 50%;
+  width: 50%;
+  border-radius: 100%;
+  border: 2px solid white;
+  background-color: white;
+}
+
+.gradient-interaction
+  .gradient-result
+  .gradient-mode[data-mode='radial']
+  + .gradient-angle {
+  opacity: 0;
+}
+
+.gradient-interaction .gradient-result .gradient-angle {
+  height: 0.35em;
+  width: 0.35em;
+  background: white;
+  border-radius: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: all 0.3s;
+  position: absolute;
+  margin: auto;
+  opacity: 0.25;
+}
+
+.gradient-interaction .gradient-result .gradient-angle > div {
+  height: 2px;
+  width: 2em;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 50%;
+  position: absolute;
+  background: white;
+  border-radius: 1em;
+  margin: auto 0;
+  transform-origin: left;
+}
+
+.gradient-interaction .gradient-result .gradient-pos {
+  height: 5em;
+  width: 5em;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  opacity: 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: all 0.3s;
+  position: absolute;
+  margin: auto;
+}
+
+.gradient-interaction .gradient-result .gradient-pos > div {
+  height: 15px;
+  width: 15px;
+  border: 2px solid transparent;
+  position: relative;
+  margin: auto;
+  transition: all 0.3s;
+}
+
+.gradient-interaction
+  .gradient-result
+  .gradient-pos
+  > div:not(.gradient-active) {
+  cursor: pointer;
+}
+
+.gradient-interaction .gradient-result .gradient-pos > div::before {
+  position: absolute;
+  content: '';
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 5px;
+  width: 5px;
+  border-radius: 100%;
+  background: white;
+  transition: all 0.3s;
+  opacity: 0.25;
+  margin: auto;
+}
+
+.gradient-interaction .gradient-result .gradient-pos > div:hover::before {
+  opacity: 1;
+}
+
+.gradient-interaction .gradient-result .gradient-pos > div.gradient-active {
+  border-color: white;
+  border-radius: 100%;
+}
+
+.gradient-interaction
+  .gradient-result
+  .gradient-pos
+  > div.gradient-active::before {
+  opacity: 1;
+}
+
+.gradient-interaction .gradient-stops {
+  margin-top: 18px;
+}
+
+.gradient-interaction .gradient-stops .gradient-stop-preview {
+  height: 8px;
+  width: 100%;
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.gradient-interaction .gradient-stops .gradient-stop-preview::before {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml;utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2 2"><path fill="white" d="M1,0H2V1H1V0ZM0,1H1V2H0V1Z"/><path fill="gray" d="M0,0H1V1H0V0ZM1,1H2V2H1V1Z"/></svg>');
+  background-size: 8px;
+  border-radius: 4px;
+  z-index: -1;
+}
+
+.gradient-interaction .gradient-stops .gradient-stop-marker {
+  position: relative;
+  z-index: 1;
+}
+
+.gradient-interaction .gradient-stops .gradient-stop-marker .gradient-marker {
+  height: 14px;
+  width: 14px;
+  position: absolute;
+  background: currentColor;
+  margin: -11px 0 0 -7px;
+  border-radius: 100%;
+  border: 2px solid white;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.24);
+  transition: opacity 0.15s;
+  cursor: grab;
+  user-select: none;
+}
+
+.gradient-interaction
+  .gradient-stops
+  .gradient-stop-marker
+  .gradient-marker::before {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml;utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2 2"><path fill="white" d="M1,0H2V1H1V0ZM0,1H1V2H0V1Z"/><path fill="gray" d="M0,0H1V1H0V0ZM1,1H2V2H1V1Z"/></svg>');
+  background-size: 4px;
+  border-radius: 100%;
+  z-index: -1;
+}
+
+.gradient-interaction
+  .gradient-stops
+  .gradient-stop-marker
+  .gradient-marker.hide {
+  opacity: 0;
+}
+
+.gradient-interaction
+  .gradient-stops
+  .gradient-stop-marker
+  .gradient-marker.active {
+  border-width: 3px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.6);
+}
+
+.default-color-panel {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 30px);
+  grid-gap: 6px;
+  justify-content: space-between;
+  margin: 14px -16px 0px -16px;
+  padding: 2px 16px 0px 16px;
+  overflow: auto;
+  max-height: 105px;
+}
+
+.default-color-panel .default-color-panel_item {
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  position: relative;
+  outline: none;
+  border-radius: 4px;
+}
+
+.default-color-panel .default-color-panel_item.default-color-panel_item-active {
+  user-select: none;
+}
+
+.default-color-panel
+  .default-color-panel_item.default-color-panel_item-active
+  .item_qub {
+  position: absolute;
+  inset: 35%;
+  background: rgb(255, 255, 255);
+  border-radius: 50%;
+  opacity: 1;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.38);
+}
+
+.input_rgba {
+  position: relative;
+}
+
+.input_rgba .input_rgba-wrap {
+  display: flex;
+}
+
+.input_rgba .input_rgba-wrap .input_rgba-hex {
+  position: relative;
+  width: 100%;
+  font-size: 0;
+}
+
+.input_rgba .input_rgba-wrap .input_rgba-hex .input_rgba-hex-label {
+  position: absolute;
+  top: 7px;
+  left: 12px;
+  font-size: 16px;
+  color: #929fb7;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: normal;
+}
+
+.input_rgba .input_rgba-wrap .input_rgba-hex input {
+  padding-left: 26px;
+}
+
+.input_rgba .input_rgba-wrap .input_rgba-alpha {
+  margin-left: 16px;
+  position: relative;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 71px;
+  font-size: 0;
+}
+
+.input_rgba .input_rgba-wrap .input_rgba-alpha .input_rgba-alpha-label {
+  position: absolute;
+  top: 16%;
+  color: #929fb7;
+  right: 12px;
+  font-size: 16px;
+}
+
+.input_rgba .input_rgba-wrap input {
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  box-shadow: none;
+  width: 100%;
+  height: 40px;
+  border-radius: 4px;
+  background-color: #fff;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 24px;
+  letter-spacing: normal;
+  color: #312e55;
+  margin-bottom: 8px;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 0;
+  padding-bottom: 0;
+  transition: all 0.15s ease;
+  box-shadow: 0px 0px 0px 2px #bbbfc5;
+}
+
+.input_rgba .input_rgba-wrap input:hover {
+  background-color: #d4e5ff;
+  box-shadow: none;
+}
+
+.input_rgba .input_rgba-wrap input:focus {
+  box-shadow: 0px 0px 0px 2px #6dbafd;
+  background-color: #e5f3ff;
+}
+
+.input_rgba .input_rgba-wrap .input_rgba-label {
+  width: 100%;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.67;
+  letter-spacing: 0.5px;
+  text-align: center;
+  color: #929fb7;
+}
+
+.popup_tabs {
+  position: relative;
+  background-color: #ffffff;
+  box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 6px;
+  min-width: 267px;
+}
+
+.popup_tabs-header {
+  width: 100%;
+  height: 49px;
+  box-shadow: inset 0 2px 6px 0 rgba(0, 0, 0, 0.04);
+  background-color: #f6f7f9;
+  display: flex;
+  border-radius: 6px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  overflow: hidden;
+}
+
+.popup_tabs-header .popup_tabs-header-label {
+  width: 100%;
+  height: 49px;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  text-align: center;
+  color: #929fb7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.popup_tabs-header .popup_tabs-header-label-active {
+  background-color: #ffffff;
+  cursor: default;
+  color: #312e55;
+}
+
+.popup_tabs-body {
+  padding: 16px;
+}
+
+/* Drag surfaces: keep the browser from scrolling/zooming while dragging on touch screens. */
+.colorpicker .color-picker-panel-board-handler,
+.colorpicker .color-picker-panel-ribbon,
+.colorpicker .color-picker-panel-alpha,
+.gradient-interaction .gradient-result,
+.gradient-interaction .gradient-stops .gradient-stop-marker .gradient-marker {
+  touch-action: none;
+}
+
+/* Keyboard focus indicators. */
+.colorpicker [role='slider']:focus-visible,
+.gradient-interaction [role='button']:focus-visible,
+.default-color-panel .default-color-panel_item:focus-visible,
+.popup_tabs-header .popup_tabs-header-label:focus-visible {
+  outline: 2px solid #6dbafd;
+  outline-offset: 2px;
+}
